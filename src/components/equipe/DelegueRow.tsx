@@ -13,15 +13,22 @@ export function DelegueRow({ delegue, cotation, onClick }: Props) {
 
   return (
     <tr
-      onClick={onClick}
-      className={`border-b border-gray-800 cursor-pointer hover:bg-gray-800/50 transition-colors ${hasUrgent ? 'bg-red-950/20' : ''}`}
+      className={`border-b border-gray-800 hover:bg-gray-800/50 transition-colors ${hasUrgent ? 'bg-red-950/20' : ''}`}
     >
-      <td className="px-4 py-3 text-sm text-gray-200">{delegue.nom}</td>
+      <td className="px-4 py-3">
+        <button
+          onClick={onClick}
+          className="text-left hover:text-blue-400 transition-colors text-sm text-gray-200 w-full"
+          aria-label={`Voir le profil de ${delegue.nom}`}
+        >
+          {delegue.nom}
+        </button>
+      </td>
       <td className="px-2 py-3 text-center"><ScoreBadge score={cotation?.interpeller ?? null} size="sm" /></td>
       <td className="px-2 py-3 text-center"><ScoreBadge score={cotation?.debattre ?? null} size="sm" /></td>
       <td className="px-2 py-3 text-center"><ScoreBadge score={cotation?.engager ?? null} size="sm" /></td>
       <td className="px-4 py-3 text-xs text-gray-500 max-w-[200px] truncate">
-        {hasUrgent && <span className="text-red-400 mr-1">🔴</span>}
+        {hasUrgent && <span aria-hidden="true" className="text-red-400 mr-1">🔴</span>}
         {cotation?.geste_prioritaire ?? '—'}
       </td>
       <td className="px-4 py-3 text-xs text-gray-500 text-right">

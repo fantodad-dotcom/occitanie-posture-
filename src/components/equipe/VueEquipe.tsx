@@ -27,9 +27,9 @@ export function VueEquipe({ delegues, cotationsData, dvCeMois }: Props) {
             Équipe ({delegues.length})
           </button>
           {selected && (
-            <button className="px-4 py-1.5 text-sm text-blue-400 font-medium">
+            <span aria-current="page" className="px-4 py-1.5 text-sm text-blue-400 font-medium">
               {selected.nom} →
-            </button>
+            </span>
           )}
         </div>
       </div>

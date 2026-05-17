@@ -1,3 +1,5 @@
+'use client'
+import { useMemo } from 'react'
 import type { Cotation, Delegue } from '@/lib/supabase/types'
 
 type CotationEntry = { delegue_id: string; cotation: Cotation }
@@ -9,8 +11,11 @@ type Props = {
 }
 
 export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
-  const cotationsMap = new Map<string, Cotation>(
-    cotationsData.map(({ delegue_id, cotation }) => [delegue_id, cotation])
+  const cotationsMap = useMemo(
+    () => new Map<string, Cotation>(
+      cotationsData.map(({ delegue_id, cotation }) => [delegue_id, cotation])
+    ),
+    [cotationsData]
   )
 
   const scores = delegues.map(d => {
