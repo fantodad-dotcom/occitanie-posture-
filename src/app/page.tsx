@@ -1,3 +1,9 @@
+import { AppShell } from '@/components/layout/AppShell'
+
 export default function Home() {
-  return <main className="p-8 text-white bg-gray-950 min-h-screen">Dashboard Occitanie — en construction</main>
+  return (
+    <AppShell>
+      <div className="p-6 text-white">Vue équipe — à implémenter</div>
+    </AppShell>
+  )
 }
