@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react'
 import { NavLeft } from './NavLeft'
 
 type Props = {
-  children: React.ReactNode
-  referentielSidebar?: React.ReactNode
+  children: ReactNode
+  referentielSidebar?: ReactNode
 }
 
 export function AppShell({ children, referentielSidebar }: Props) {

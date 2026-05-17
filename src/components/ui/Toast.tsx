@@ -10,7 +10,7 @@ export function Toast({ message, onClose }: Props) {
   }, [onClose])
 
   return (
-    <div className="fixed bottom-4 right-4 bg-green-800 text-green-100 px-4 py-2 rounded-lg shadow-lg text-sm z-50">
+    <div role="status" aria-live="polite" className="fixed bottom-4 right-4 bg-green-800 text-green-100 px-4 py-2 rounded-lg shadow-lg text-sm z-50">
       {message}
     </div>
   )

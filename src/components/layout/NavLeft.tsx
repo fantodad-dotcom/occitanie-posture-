@@ -22,10 +22,10 @@ export function NavLeft() {
             href={href}
             title={label}
             className={`w-8 h-8 flex items-center justify-center rounded-md text-base transition-colors ${
-              active ? 'bg-blue-700' : 'hover:bg-gray-800 text-gray-500'
+              active ? 'bg-blue-700 text-white' : 'hover:bg-gray-800 text-gray-500'
             }`}
           >
-            {icon}
+            <span aria-hidden="true">{icon}</span>
           </Link>
         )
       })}
