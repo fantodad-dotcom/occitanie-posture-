@@ -62,6 +62,7 @@ export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken,
     setImportResult(result)
     setImporting(false)
     setToast(`Import : ${result.created} créés, ${result.cotations} cotations`)
+    e.target.value = ''
   }
 
   function handleExport() {

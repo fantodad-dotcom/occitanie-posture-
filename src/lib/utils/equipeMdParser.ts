@@ -18,7 +18,7 @@ export function parseMdTable(markdown: string): DelegueImport[] {
 
   return dataLines.map(line => {
     const cells = line.split('|').map(c => c.trim()).filter(Boolean)
-    if (cells.length < 3) return null
+    if (cells.length < 4) return null
     return {
       nom: cells[0],
       interpeller: parseScore(cells[1]),

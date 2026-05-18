@@ -66,6 +66,7 @@ export async function importEquipeMd(mdContent: string): Promise<{ created: numb
     }
   }
 
+  revalidatePath('/parametres')
   revalidatePath('/')
   return { created, cotations, skipped }
 }

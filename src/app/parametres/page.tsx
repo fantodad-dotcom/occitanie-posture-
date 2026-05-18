@@ -8,9 +8,10 @@ import type { Cotation } from '@/lib/supabase/types'
 
 export default async function ParametresPage() {
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
   const [deleguesActifs, inactifsResult, token, cotations] = await Promise.all([
     getDeleguesActifs(),
-    supabase.from('delegues').select('*').eq('actif', false),
+    supabase.from('delegues').select('*').eq('actif', false).eq('manager_id', user!.id),
     getActiveToken(),
     getAllCotations(),
   ])
