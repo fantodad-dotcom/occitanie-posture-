@@ -12,27 +12,25 @@ export function DelegueRow({ delegue, cotation, onClick }: Props) {
   const hasUrgent = cotation && [cotation.interpeller, cotation.debattre, cotation.engager].some(s => s === 1)
 
   return (
-    <tr
-      className={`border-b border-gray-800 hover:bg-gray-800/50 transition-colors ${hasUrgent ? 'bg-red-950/20' : ''}`}
-    >
+    <tr className={`border-b border-slate-800/40 transition-colors duration-150 ${hasUrgent ? 'bg-red-500/5' : 'hover:bg-slate-800/30'}`}>
       <td className="px-4 py-3">
         <button
           onClick={onClick}
-          className="text-left hover:text-blue-400 transition-colors text-sm text-gray-200 w-full"
+          className="text-left text-sm font-medium text-slate-200 hover:text-blue-400 transition-colors duration-150 w-full cursor-pointer"
           aria-label={`Voir le profil de ${delegue.nom}`}
         >
+          {hasUrgent && <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-500 mr-2 mb-0.5" aria-hidden="true" />}
           {delegue.nom}
         </button>
       </td>
-      <td className="px-2 py-3 text-center"><ScoreBadge score={cotation?.interpeller ?? null} size="sm" /></td>
-      <td className="px-2 py-3 text-center"><ScoreBadge score={cotation?.debattre ?? null} size="sm" /></td>
-      <td className="px-2 py-3 text-center"><ScoreBadge score={cotation?.engager ?? null} size="sm" /></td>
-      <td className="px-4 py-3 text-xs text-gray-500 max-w-[200px] truncate">
-        {hasUrgent && <span aria-hidden="true" className="text-red-400 mr-1">🔴</span>}
-        {cotation?.geste_prioritaire ?? '—'}
+      <td className="px-3 py-3 text-center"><ScoreBadge score={cotation?.interpeller ?? null} size="sm" /></td>
+      <td className="px-3 py-3 text-center"><ScoreBadge score={cotation?.debattre ?? null} size="sm" /></td>
+      <td className="px-3 py-3 text-center"><ScoreBadge score={cotation?.engager ?? null} size="sm" /></td>
+      <td className="px-4 py-3 text-xs text-slate-500 max-w-[200px] truncate">
+        {cotation?.geste_prioritaire ?? <span className="text-slate-700">—</span>}
       </td>
-      <td className="px-4 py-3 text-xs text-gray-500 text-right">
-        {cotation ? new Date(cotation.date_visite).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) : '—'}
+      <td className="px-4 py-3 text-xs text-slate-500 text-right tabular-nums">
+        {cotation ? new Date(cotation.date_visite).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) : <span className="text-slate-700">—</span>}
       </td>
     </tr>
   )

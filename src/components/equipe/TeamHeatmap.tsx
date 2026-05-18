@@ -20,16 +20,16 @@ export function TeamHeatmap({ delegues, cotationsData, onSelectDelegue }: Props)
   )
 
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+    <div className="bg-slate-900/50 border border-slate-800/60 rounded-xl overflow-hidden">
       <table className="w-full">
         <thead>
-          <tr className="bg-gray-950 border-b border-gray-800">
-            <th scope="col" className="px-4 py-2.5 text-left text-xs font-semibold text-blue-400">Délégué</th>
-            <th scope="col" className="px-2 py-2.5 text-center text-xs font-semibold text-sky-400"><span aria-hidden="true">🔵</span> I</th>
-            <th scope="col" className="px-2 py-2.5 text-center text-xs font-semibold text-green-400"><span aria-hidden="true">🟢</span> D</th>
-            <th scope="col" className="px-2 py-2.5 text-center text-xs font-semibold text-orange-400"><span aria-hidden="true">🟠</span> E</th>
-            <th scope="col" className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500">Geste en cours</th>
-            <th scope="col" className="px-4 py-2.5 text-right text-xs font-semibold text-gray-500">Dern. DV</th>
+          <tr className="bg-slate-950/80 border-b border-slate-800/60">
+            <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Délégué</th>
+            <th scope="col" className="px-3 py-3 text-center text-xs font-semibold text-sky-400 uppercase tracking-wide">Interpeller</th>
+            <th scope="col" className="px-3 py-3 text-center text-xs font-semibold text-emerald-400 uppercase tracking-wide">Débattre</th>
+            <th scope="col" className="px-3 py-3 text-center text-xs font-semibold text-amber-400 uppercase tracking-wide">Engager</th>
+            <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">Geste en cours</th>
+            <th scope="col" className="px-4 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wide">Dern. DV</th>
           </tr>
         </thead>
         <tbody>

@@ -1,5 +1,6 @@
 'use client'
 import { useMemo } from 'react'
+import { TrendingUp, AlertTriangle, Star, CalendarCheck } from 'lucide-react'
 import type { Cotation, Delegue } from '@/lib/supabase/types'
 
 type CotationEntry = { delegue_id: string; cotation: Cotation }
@@ -35,19 +36,58 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
   }).length
 
   const cards = [
-    { label: 'MOY. ÉQUIPE', value: moyenneEquipe, sub: '/ 4', color: 'text-white' },
-    { label: 'URGENTS', value: urgents, sub: 'niveau 1', color: 'text-red-400' },
-    { label: 'MODÈLES', value: modeles, sub: 'niveau 3+', color: 'text-green-400' },
-    { label: 'PROCH. DV', value: dvCeMois, sub: 'ce mois', color: 'text-orange-400' },
+    {
+      label: 'Moyenne équipe',
+      value: moyenneEquipe,
+      sub: '/ 4',
+      color: 'text-blue-400',
+      bg: 'bg-blue-500/8',
+      border: 'border-blue-500/20',
+      icon: TrendingUp,
+      iconColor: 'text-blue-400',
+    },
+    {
+      label: 'Urgents',
+      value: urgents,
+      sub: 'niveau 1',
+      color: 'text-red-400',
+      bg: 'bg-red-500/8',
+      border: 'border-red-500/20',
+      icon: AlertTriangle,
+      iconColor: 'text-red-400',
+    },
+    {
+      label: 'Modèles',
+      value: modeles,
+      sub: 'niveau 3+',
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-500/8',
+      border: 'border-emerald-500/20',
+      icon: Star,
+      iconColor: 'text-emerald-400',
+    },
+    {
+      label: 'DV ce mois',
+      value: dvCeMois,
+      sub: 'planifiées',
+      color: 'text-amber-400',
+      bg: 'bg-amber-500/8',
+      border: 'border-amber-500/20',
+      icon: CalendarCheck,
+      iconColor: 'text-amber-400',
+    },
   ]
 
   return (
     <div className="grid grid-cols-4 gap-3 mb-6">
-      {cards.map(({ label, value, sub, color }) => (
-        <div key={label} className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center">
-          <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">{label}</p>
-          <p className={`text-3xl font-bold ${color}`}>{value}</p>
-          <p className="text-gray-600 text-xs mt-0.5">{sub}</p>
+      {cards.map(({ label, value, sub, color, bg, border, icon: Icon, iconColor }) => (
+        <div key={label} className={`${bg} border ${border} rounded-xl p-4`}>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-slate-400 text-xs font-medium">{label}</p>
+            <Icon size={15} className={iconColor} />
+          </div>
+          <p className={`text-3xl font-bold ${color} leading-none`}>{value}</p>
+          <p className="text-slate-500 text-xs mt-1.5">{sub}</p>
         </div>
       ))}
     </div>
