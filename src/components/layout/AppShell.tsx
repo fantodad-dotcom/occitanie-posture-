@@ -8,11 +8,11 @@ type Props = {
 
 export function AppShell({ children, referentielSidebar }: Props) {
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-950">
+    <div className="flex h-screen overflow-hidden" style={{ background: '#141414' }}>
       <NavLeft />
       <main className="flex-1 overflow-y-auto min-w-0">{children}</main>
       {referentielSidebar && (
-        <aside className="w-36 shrink-0 bg-slate-950 border-l border-slate-800/60 overflow-y-auto">
+        <aside className="w-44 shrink-0 overflow-y-auto" style={{ background: '#141414', borderLeft: '1px solid rgba(255,255,255,0.07)' }}>
           {referentielSidebar}
         </aside>
       )}

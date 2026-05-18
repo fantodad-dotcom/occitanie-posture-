@@ -40,54 +40,52 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
       label: 'Moyenne équipe',
       value: moyenneEquipe,
       sub: '/ 4',
-      color: 'text-blue-400',
-      bg: 'bg-blue-500/8',
-      border: 'border-blue-500/20',
+      color: '#60A5FA',
+      accentColor: '#3B82F6',
       icon: TrendingUp,
-      iconColor: 'text-blue-400',
     },
     {
       label: 'Urgents',
       value: urgents,
       sub: 'niveau 1',
-      color: 'text-red-400',
-      bg: 'bg-red-500/8',
-      border: 'border-red-500/20',
+      color: '#F87171',
+      accentColor: '#EF4444',
       icon: AlertTriangle,
-      iconColor: 'text-red-400',
     },
     {
       label: 'Modèles',
       value: modeles,
       sub: 'niveau 3+',
-      color: 'text-emerald-400',
-      bg: 'bg-emerald-500/8',
-      border: 'border-emerald-500/20',
+      color: '#4ADE80',
+      accentColor: '#22C55E',
       icon: Star,
-      iconColor: 'text-emerald-400',
     },
     {
-      label: 'DV ce mois',
+      label: 'DUOs ce mois',
       value: dvCeMois,
-      sub: 'planifiées',
-      color: 'text-amber-400',
-      bg: 'bg-amber-500/8',
-      border: 'border-amber-500/20',
+      sub: 'planifiés',
+      color: '#FBBF24',
+      accentColor: '#F59E0B',
       icon: CalendarCheck,
-      iconColor: 'text-amber-400',
     },
   ]
 
   return (
     <div className="grid grid-cols-4 gap-3 mb-6">
-      {cards.map(({ label, value, sub, color, bg, border, icon: Icon, iconColor }) => (
-        <div key={label} className={`${bg} border ${border} rounded-xl p-4`}>
+      {cards.map(({ label, value, sub, color, accentColor, icon: Icon }) => (
+        <div key={label} style={{
+          background: '#1C1C1C',
+          border: '1px solid rgba(255,255,255,0.07)',
+          borderTop: `2px solid ${accentColor}44`,
+          borderRadius: '10px',
+          padding: '16px',
+        }}>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-slate-400 text-xs font-medium">{label}</p>
-            <Icon size={15} className={iconColor} />
+            <p style={{ color: '#888', fontSize: '12px', fontWeight: 500 }}>{label}</p>
+            <Icon size={15} style={{ color }} />
           </div>
-          <p className={`text-3xl font-bold ${color} leading-none`}>{value}</p>
-          <p className="text-slate-500 text-xs mt-1.5">{sub}</p>
+          <p style={{ color, fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>{value}</p>
+          <p style={{ color: '#555', fontSize: '11px', marginTop: '6px' }}>{sub}</p>
         </div>
       ))}
     </div>

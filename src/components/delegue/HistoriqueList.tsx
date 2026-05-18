@@ -7,9 +7,9 @@ export function HistoriqueList({ cotations }: Props) {
   const sorted = [...cotations].reverse()
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
-      <h2 className="text-sm font-semibold text-gray-300 px-4 py-3 border-b border-gray-800">Historique des DV</h2>
+      <h2 className="text-sm font-semibold text-gray-300 px-4 py-3 border-b border-gray-800">Historique des DUOs</h2>
       {sorted.length === 0 ? (
-        <p className="text-gray-600 text-sm p-4">Aucune double visite enregistrée.</p>
+        <p className="text-gray-600 text-sm p-4">Aucun DUO enregistré.</p>
       ) : (
         <div className="divide-y divide-gray-800">
           {sorted.map(c => (

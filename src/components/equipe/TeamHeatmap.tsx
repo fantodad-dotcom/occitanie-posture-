@@ -20,16 +20,16 @@ export function TeamHeatmap({ delegues, cotationsData, onSelectDelegue }: Props)
   )
 
   return (
-    <div className="bg-slate-900/50 border border-slate-800/60 rounded-xl overflow-hidden">
+    <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', overflow: 'hidden' }}>
       <table className="w-full">
         <thead>
-          <tr className="bg-slate-950/80 border-b border-slate-800/60">
-            <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Délégué</th>
-            <th scope="col" className="px-3 py-3 text-center text-xs font-semibold text-sky-400 uppercase tracking-wide">Interpeller</th>
-            <th scope="col" className="px-3 py-3 text-center text-xs font-semibold text-emerald-400 uppercase tracking-wide">Débattre</th>
-            <th scope="col" className="px-3 py-3 text-center text-xs font-semibold text-amber-400 uppercase tracking-wide">Engager</th>
-            <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">Geste en cours</th>
-            <th scope="col" className="px-4 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wide">Dern. DV</th>
+          <tr style={{ background: '#141414', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+            <th scope="col" style={{ padding: '10px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Délégué</th>
+            <th scope="col" style={{ padding: '10px 12px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Interpeller</th>
+            <th scope="col" style={{ padding: '10px 12px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: '#4ADE80', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Débattre</th>
+            <th scope="col" style={{ padding: '10px 12px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: '#FB923C', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Engager</th>
+            <th scope="col" style={{ padding: '10px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Geste en cours</th>
+            <th scope="col" style={{ padding: '10px 16px', textAlign: 'right', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Dernier DUO</th>
           </tr>
         </thead>
         <tbody>

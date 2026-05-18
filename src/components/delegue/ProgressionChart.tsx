@@ -8,7 +8,7 @@ export function ProgressionChart({ cotations }: Props) {
   if (cotations.length < 2) {
     return (
       <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 text-center text-gray-500 text-sm mb-6">
-        Minimum 2 double visites pour afficher la progression.
+        Minimum 2 DUOs pour afficher la progression.
       </div>
     )
   }
