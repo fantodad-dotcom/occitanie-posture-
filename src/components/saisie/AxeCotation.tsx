@@ -17,13 +17,32 @@ type Props = {
   color: string
   value: number | null
   onChange: (v: number | null) => void
+  behaviors?: string[]
 }
 
-export function AxeCotation({ label, color, value, onChange }: Props) {
+export function AxeCotation({ label, color, value, onChange, behaviors }: Props) {
   return (
-    <div style={{ marginBottom: '20px' }}>
-      <p style={{ fontSize: '13px', fontWeight: 600, marginBottom: '10px', color }}>{label}</p>
-      <div style={{ display: 'flex', gap: '8px' }}>
+    <div style={{ marginBottom: '4px' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+        <p style={{ fontSize: '13px', fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+          {label}
+        </p>
+        {value !== null && (
+          <span style={{
+            fontSize: '10px', fontWeight: 600,
+            color: NIVEAU_COLORS[value],
+            background: `${NIVEAU_COLORS[value]}18`,
+            border: `1px solid ${NIVEAU_COLORS[value]}44`,
+            padding: '2px 8px', borderRadius: '20px',
+          }}>
+            {NIVEAU_LABELS[value]}
+          </span>
+        )}
+      </div>
+
+      {/* Boutons niveau */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: behaviors?.length ? '10px' : '0' }}>
         {[1, 2, 3].map(n => {
           const isSelected = value === n
           const levelColor = NIVEAU_COLORS[n]
@@ -78,6 +97,26 @@ export function AxeCotation({ label, color, value, onChange }: Props) {
           ?
         </button>
       </div>
+
+      {/* Comportements attendus */}
+      {behaviors && behaviors.length > 0 && (
+        <div style={{
+          background: `${color}08`,
+          border: `1px solid ${color}18`,
+          borderRadius: '8px',
+          padding: '10px 12px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
+        }}>
+          {behaviors.map((b, i) => (
+            <div key={i} style={{ display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
+              <span style={{ color, fontSize: '10px', marginTop: '2px', flexShrink: 0, opacity: 0.6 }}>•</span>
+              <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', lineHeight: '1.55' }}>{b}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

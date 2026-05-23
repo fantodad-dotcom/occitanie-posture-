@@ -6,6 +6,26 @@ import { saveCotation } from '@/app/saisie/actions'
 import { Toast } from '@/components/ui/Toast'
 import type { Delegue } from '@/lib/supabase/types'
 
+const BEHAVIORS = {
+  interpeller: [
+    "L'enjeu préparatoire est clairement défini en amont",
+    "Crée un écart entre ce qu'on propose et ce que l'autre croit ou utilise",
+    "Donne de la valeur au produit et au bénéfice patient",
+    "Se positionne sur le registre émotionnel, pas uniquement rationnel",
+  ],
+  debattre: [
+    "Fait réfléchir sans polémique",
+    "Reste sur le fil de pensée de l'autre",
+    "Valorise le point de vue de l'autre, marque son désaccord avec tact",
+    "Écoute activement et échange avec une posture assertive",
+  ],
+  engager: [
+    "Recherche un engagement concret, uniquement sur ce qui a suscité l'échange",
+    "Reformule ce qui a retenu l'attention",
+    "Reste cohérent avec le discours patient : bénéfices, état futur, positivisme",
+  ],
+}
+
 type Props = { delegues: Delegue[]; preselectedId?: string }
 
 export function SaisieForm({ delegues, preselectedId }: Props) {
@@ -33,61 +53,102 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 space-y-6">
-        <div>
-          <label className="block text-sm text-gray-400 mb-1">Délégué</label>
-          <select
-            value={delegueId}
-            onChange={e => setDelegueId(e.target.value)}
-            required
-            className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white"
-          >
-            <option value="">Sélectionner…</option>
-            {delegues.map(d => <option key={d.id} value={d.id}>{d.nom}</option>)}
-          </select>
+      <form onSubmit={handleSubmit} style={{ maxWidth: '520px', margin: '0 auto', padding: '0 24px 40px' }}>
+
+        {/* Délégué + Date */}
+        <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '16px', display: 'flex', gap: '12px' }}>
+          <div style={{ flex: 2 }}>
+            <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+              Délégué
+            </label>
+            <select
+              value={delegueId}
+              onChange={e => setDelegueId(e.target.value)}
+              required
+              style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: delegueId ? '#ECECEC' : '#555', fontSize: '13px', cursor: 'pointer' }}
+            >
+              <option value="">Sélectionner…</option>
+              {delegues.map(d => <option key={d.id} value={d.id}>{d.nom}</option>)}
+            </select>
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+              Date DUO
+            </label>
+            <input
+              type="date"
+              value={date}
+              onChange={e => setDate(e.target.value)}
+              style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
+            />
+          </div>
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-400 mb-1">Date de visite</label>
-          <input
-            type="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
-            className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white"
-          />
+        {/* Axes E&C */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
+          {[
+            { key: 'interpeller' as const, label: 'Interpeller', color: '#38BDF8', value: interpeller, onChange: setInterpeller },
+            { key: 'debattre' as const, label: 'Débattre', color: '#4ADE80', value: debattre, onChange: setDebattre },
+            { key: 'engager' as const, label: 'Engager', color: '#FB923C', value: engager, onChange: setEngager },
+          ].map(axe => (
+            <div key={axe.key} style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px' }}>
+              <AxeCotation
+                label={axe.label}
+                color={axe.color}
+                value={axe.value}
+                onChange={axe.onChange}
+                behaviors={BEHAVIORS[axe.key]}
+              />
+            </div>
+          ))}
         </div>
 
-        <AxeCotation label="🔵 INTERPELLER" color="#4fc3f7" value={interpeller} onChange={setInterpeller} />
-        <AxeCotation label="🟢 DÉBATTRE" color="#81c784" value={debattre} onChange={setDebattre} />
-        <AxeCotation label="🟠 ENGAGER" color="#ffb74d" value={engager} onChange={setEngager} />
-
-        <div>
-          <label className="block text-sm text-gray-400 mb-1">Geste prioritaire</label>
+        {/* Geste prioritaire */}
+        <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '12px' }}>
+          <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+            Geste prioritaire
+          </label>
           <input
             type="text"
             value={geste}
             onChange={e => setGeste(e.target.value)}
-            placeholder="ex. Tenir le silence après désaccord"
-            className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-600"
+            placeholder="ex. Tenir le silence après le désaccord"
+            style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
           />
+          <p style={{ fontSize: '10px', color: '#444', marginTop: '6px' }}>Règle E&C — 1 seul geste par délégué.</p>
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-400 mb-1">Notes de débrief (optionnel)</label>
+        {/* Notes */}
+        <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '20px' }}>
+          <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+            Notes de débrief <span style={{ color: '#444', fontWeight: 400, textTransform: 'none' }}>(optionnel)</span>
+          </label>
           <textarea
             value={notes}
             onChange={e => setNotes(e.target.value)}
             rows={3}
-            className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-600 resize-none"
+            style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px', resize: 'none', fontFamily: 'inherit', lineHeight: '1.6' }}
           />
         </div>
 
+        {/* Submit */}
         <button
           type="submit"
           disabled={!canSubmit || loading}
-          className="w-full py-3.5 bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white font-semibold rounded-lg text-lg transition-colors"
+          style={{
+            width: '100%',
+            padding: '14px',
+            borderRadius: '10px',
+            border: 'none',
+            background: canSubmit && !loading ? '#6366F1' : 'rgba(99,102,241,0.25)',
+            color: canSubmit && !loading ? '#fff' : 'rgba(255,255,255,0.3)',
+            fontSize: '14px',
+            fontWeight: 600,
+            cursor: canSubmit && !loading ? 'pointer' : 'not-allowed',
+            transition: 'all 0.15s',
+          }}
         >
-          {loading ? 'Enregistrement…' : '✓ Enregistrer'}
+          {loading ? 'Enregistrement…' : 'Enregistrer le DUO'}
         </button>
       </form>
       {toast && <Toast message="Cotation enregistrée ✓" onClose={() => setToast(false)} />}
