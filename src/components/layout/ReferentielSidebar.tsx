@@ -63,7 +63,7 @@ export function ReferentielSidebar(props: Props) {
   return (
     <div style={{ padding: '12px 8px', height: '100%' }}>
       <p style={{ color: '#444', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        Référentiel E1C
+        Référentiel E&C
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {AXES.map((axe) => {
@@ -120,7 +120,7 @@ export function ReferentielSidebar(props: Props) {
           )
         })}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '12px' }}>
-          <p style={{ color: '#444', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600, marginBottom: '6px' }}>Règles E1C</p>
+          <p style={{ color: '#444', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600, marginBottom: '6px' }}>Règles E&C</p>
           <div style={{ fontSize: '9px', color: '#444', display: 'flex', flexDirection: 'column', gap: '2px', lineHeight: '1.5' }}>
             <p>1 geste / délégué</p>
             <p>Lui d&apos;abord</p>

@@ -11,7 +11,7 @@ const NAV_MAIN = [
 ]
 
 const NAV_COACHING = [
-  { href: '/coaching', icon: HelpCircle, label: 'Questions E1C' },
+  { href: '/coaching', icon: HelpCircle, label: 'Questions E&C' },
   { href: '/debrief', icon: Zap, label: 'Auto-débrief' },
   { href: '/feuille-de-route', icon: Map, label: 'Feuille de route' },
 ]
@@ -61,7 +61,7 @@ export function NavLeft() {
       {/* Coaching nav */}
       <div className="px-2 pt-2 pb-1">
         <div style={{ color: '#444', fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}
-             className="px-2 pb-1.5">Coaching E1C</div>
+             className="px-2 pb-1.5">Coaching E&C</div>
         {NAV_COACHING.map(({ href, icon: Icon, label }) => (
           <Link key={href} href={href}
             className={`flex items-center gap-2.5 px-3 py-2 rounded-md text-[13px] mb-0.5 transition-all duration-150 cursor-pointer ${

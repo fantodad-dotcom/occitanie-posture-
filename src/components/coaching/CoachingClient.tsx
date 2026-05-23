@@ -4,8 +4,8 @@ import type { Delegue, Cotation } from '@/lib/supabase/types'
 
 type CotationEntry = { delegue_id: string; cotation: Cotation }
 
-// Bibliothèque de questions E1C par axe et niveau
-const QUESTIONS_E1C = {
+// Bibliothèque de questions E&C par axe et niveau
+const QUESTIONS_EC = {
   interpeller: {
     1: [
       "Qu'est-ce que tu voulais provoquer comme réaction chez ce médecin ?",
@@ -97,13 +97,13 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
   const selected = delegues.find(d => d.id === selectedId)
   const cotation = selectedId ? cotationsMap.get(selectedId) : null
   const level = cotation ? (cotation[selectedAxe] ?? 1) : 1
-  const questions = QUESTIONS_E1C[selectedAxe][level as 1 | 2 | 3 | 4] ?? QUESTIONS_E1C[selectedAxe][1]
+  const questions = QUESTIONS_EC[selectedAxe][level as 1 | 2 | 3 | 4] ?? QUESTIONS_EC[selectedAxe][1]
 
   return (
     <div className="p-6">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-lg font-semibold text-white mb-1">Questions de coaching E1C</h1>
+        <h1 className="text-lg font-semibold text-white mb-1">Questions de coaching E&C</h1>
         <p style={{ color: '#666' }} className="text-sm">Questions adaptées au niveau actuel du délégué sur chaque axe.</p>
       </div>
 
@@ -169,7 +169,7 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
               </div>
 
               <div style={{ marginBottom: '16px', fontSize: '11px', color: '#555', fontStyle: 'italic' }}>
-                Questions à poser lors du débrief DUO — protocole E1C (Eagle & Condor)
+                Questions à poser lors du débrief DUO — protocole E&C
               </div>
 
               <div className="flex flex-col gap-3">
@@ -182,7 +182,7 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
               </div>
 
               <div style={{ marginTop: '16px', padding: '12px 14px', background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.15)', borderRadius: '8px', fontSize: '11px', color: '#888', lineHeight: '1.6' }}>
-                <strong style={{ color: '#818CF8' }}>Règle E1C :</strong> Maximum 1 geste prioritaire par délégué. Faits ≠ impressions. Observer ≠ évaluer.
+                <strong style={{ color: '#818CF8' }}>Règle E&C :</strong> Maximum 1 geste prioritaire par délégué. Faits ≠ impressions. Observer ≠ évaluer.
               </div>
             </div>
           )}

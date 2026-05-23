@@ -28,7 +28,7 @@ export function DebriefClient({ delegues }: Props) {
       <div className="p-6 max-w-xl mx-auto">
         <div className="mb-6">
           <h1 className="text-lg font-semibold text-white mb-1">Auto-débrief DUO</h1>
-          <p style={{ color: '#666' }} className="text-sm">Protocole E1C (Eagle & Condor) — 7 questions dans l'ordre.</p>
+          <p style={{ color: '#666' }} className="text-sm">Protocole E&C — 7 questions dans l'ordre.</p>
         </div>
         <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '20px' }}>
           <div style={{ color: '#888', fontSize: '12px', marginBottom: '12px' }}>Sélectionne le délégué</div>

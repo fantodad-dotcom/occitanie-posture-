@@ -6,7 +6,7 @@ export default function FeuilleDeRoutePage() {
       <div className="p-6 max-w-3xl">
         <div className="mb-6">
           <h1 className="text-lg font-semibold text-white mb-1">Feuille de route</h1>
-          <p style={{ color: '#666' }} className="text-sm">Le chemin décidé et où nous en sommes — méthode E1C (Eagle & Condor)</p>
+          <p style={{ color: '#666' }} className="text-sm">Le chemin décidé et où nous en sommes — méthode E&C</p>
         </div>
 
         {/* Vision */}
@@ -44,7 +44,7 @@ export default function FeuilleDeRoutePage() {
             </p>
             <div style={{ marginTop: '12px', padding: '10px', background: '#242424', borderRadius: '6px', fontSize: '11px', color: '#666', lineHeight: '1.6' }}>
               → Préparer le 9 juin<br/>
-              → Travailler en synergie avec Virginie et Eagle & Condor
+              → Travailler en synergie avec Virginie et E&C
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function FeuilleDeRoutePage() {
             <div>
               <div style={{ color: '#ECECEC', fontSize: '13px', fontWeight: 600, marginBottom: '6px' }}>Le pilotage et la mesure</div>
               <p style={{ color: '#888', fontSize: '12px', lineHeight: '1.6', marginBottom: '8px' }}>
-                Formaliser l&apos;approche de coaching (synergie Virginie + Eagle & Condor). Structurer des temps de training réguliers. Suivre l&apos;adoption des nouveaux réflexes sur le terrain.
+                Formaliser l&apos;approche de coaching (synergie Virginie + E&C). Structurer des temps de training réguliers. Suivre l&apos;adoption des nouveaux réflexes sur le terrain.
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                 {['Formaliser le coaching', 'Training régulier', "Mesurer l'adoption", '9 juin — Jour J'].map(tag => (
@@ -84,7 +84,7 @@ export default function FeuilleDeRoutePage() {
 
         {/* Suivi progression */}
         <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '18px' }}>
-          <div style={{ fontSize: '12px', color: '#555', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>Méthode E1C — 3 axes à piloter</div>
+          <div style={{ fontSize: '12px', color: '#555', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>Méthode E&C — 3 axes à piloter</div>
           <div className="grid grid-cols-3 gap-3">
             {[
               { axe: 'Interpeller', desc: "Créer l'écart. Provoquer la réaction. Tenir le silence.", color: '#38BDF8' },
