@@ -6,8 +6,8 @@ describe('calculPriorite', () => {
     const p = calculPriorite(1.5, 8)
     expect(p).toBeGreaterThan(calculPriorite(3, 2))
   })
-  it('score 4 et 0 semaines = priorité minimale', () =>
-    expect(calculPriorite(4, 0)).toBeLessThan(1))
+  it('score 3 et 0 semaines = priorité minimale', () =>
+    expect(calculPriorite(3, 0)).toBeLessThan(1))
 })
 
 describe('statutDV', () => {

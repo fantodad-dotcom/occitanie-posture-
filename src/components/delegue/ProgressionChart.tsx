@@ -27,7 +27,7 @@ export function ProgressionChart({ cotations }: Props) {
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis dataKey="date" tick={{ fill: '#6b7280', fontSize: 11 }} />
-          <YAxis domain={[1, 4]} ticks={[1, 2, 3, 4]} tick={{ fill: '#6b7280', fontSize: 11 }} />
+          <YAxis domain={[1, 3]} ticks={[1, 2, 3]} tick={{ fill: '#6b7280', fontSize: 11 }} />
           <Tooltip contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8 }} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <Line type="monotone" dataKey="Interpeller" stroke="#4fc3f7" strokeWidth={2} connectNulls dot={{ r: 4 }} />

@@ -1,7 +1,7 @@
 type Scores = { interpeller: number | null; debattre: number | null; engager: number | null }
 
 export function calculPriorite(scoreMoyen: number, semainsSansDV: number): number {
-  return (4 - scoreMoyen) + (semainsSansDV * 0.5)
+  return (3 - scoreMoyen) + (semainsSansDV * 0.5)
 }
 
 export function statutDV(scores: Scores, semainsSansDV: number): 'urgent' | 'a_planifier' | 'ok' {

@@ -24,21 +24,21 @@ const AXES = [
     label: 'INTERPELLER',
     color: '#38BDF8',
     bg: 'rgba(56,189,248,0.12)',
-    niveaux: ['Réflexe produit', 'Premiers gestes', 'Posture acquise', 'Compétiteur'],
+    niveaux: ['En cours', 'Acquis', 'Expert'],
   },
   {
     key: 'debattre' as const,
     label: 'DÉBATTRE',
     color: '#4ADE80',
     bg: 'rgba(74,222,128,0.12)',
-    niveaux: ['Polémique', 'Conscience', 'Débat ouvert', 'Silence tenu'],
+    niveaux: ['En cours', 'Acquis', 'Expert'],
   },
   {
     key: 'engager' as const,
     label: 'ENGAGER',
     color: '#FB923C',
     bg: 'rgba(251,146,60,0.12)',
-    niveaux: ['Imposé', 'Incohérent', 'Patient-centré', 'Fil rouge'],
+    niveaux: ['En cours', 'Acquis', 'Expert'],
   },
 ]
 
@@ -100,8 +100,7 @@ export function ReferentielSidebar(props: Props) {
                           textAlign: 'center',
                           backgroundColor:
                             niveau === 1 ? '#f85149' :
-                            niveau === 2 ? '#f0883e' :
-                            niveau === 3 ? '#388e3c' : '#1565c0',
+                            niveau === 2 ? '#f0883e' : '#3fb950',
                         }}
                       >
                         {niveau}

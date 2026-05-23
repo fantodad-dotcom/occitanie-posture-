@@ -4,9 +4,18 @@ export function scoreColor(score: number | null): string {
     1: '#f85149',
     2: '#f0883e',
     3: '#3fb950',
-    4: '#58a6ff',
   }
   return colors[score] ?? '#6e7681'
+}
+
+export function scoreLabel(score: number | null): string {
+  if (score === null) return '—'
+  const labels: Record<number, string> = {
+    1: 'En cours',
+    2: 'Acquis',
+    3: 'Expert',
+  }
+  return labels[score] ?? '—'
 }
 
 export function scoreMoyen(scores: (number | null)[]): number | null {
