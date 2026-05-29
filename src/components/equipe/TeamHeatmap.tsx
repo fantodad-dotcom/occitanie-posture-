@@ -28,8 +28,8 @@ export function TeamHeatmap({ delegues, cotationsData, onSelectDelegue }: Props)
             <th scope="col" style={{ padding: '10px 12px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Interpeller</th>
             <th scope="col" style={{ padding: '10px 12px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: '#4ADE80', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Débattre</th>
             <th scope="col" style={{ padding: '10px 12px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: '#FB923C', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Engager</th>
-            <th scope="col" style={{ padding: '10px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Geste en cours</th>
-            <th scope="col" style={{ padding: '10px 16px', textAlign: 'right', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Dernier DUO</th>
+            <th scope="col" className="hidden md:table-cell" style={{ padding: '10px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Geste en cours</th>
+            <th scope="col" className="hidden md:table-cell" style={{ padding: '10px 16px', textAlign: 'right', fontSize: '11px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Dernier DUO</th>
           </tr>
         </thead>
         <tbody>

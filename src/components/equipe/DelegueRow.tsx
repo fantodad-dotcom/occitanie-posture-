@@ -23,7 +23,7 @@ export function DelegueRow({ delegue, cotation, onClick }: Props) {
       <td style={{ padding: '10px 16px' }}>
         <button
           onClick={onClick}
-          style={{ textAlign: 'left', fontSize: '13px', fontWeight: 500, color: '#DCDCDC', cursor: 'pointer', background: 'none', border: 'none', width: '100%', padding: 0, transition: 'color 150ms' }}
+          style={{ display: 'flex', alignItems: 'center', textAlign: 'left', fontSize: '13px', fontWeight: 500, color: '#DCDCDC', cursor: 'pointer', background: 'none', border: 'none', width: '100%', padding: 0, transition: 'color 150ms' }}
           onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#818CF8'}
           onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#DCDCDC'}
           aria-label={`Voir le profil de ${delegue.nom}`}
@@ -35,10 +35,10 @@ export function DelegueRow({ delegue, cotation, onClick }: Props) {
       <td style={{ padding: '10px 12px', textAlign: 'center' }}><ScoreBadge score={cotation?.interpeller ?? null} size="sm" /></td>
       <td style={{ padding: '10px 12px', textAlign: 'center' }}><ScoreBadge score={cotation?.debattre ?? null} size="sm" /></td>
       <td style={{ padding: '10px 12px', textAlign: 'center' }}><ScoreBadge score={cotation?.engager ?? null} size="sm" /></td>
-      <td style={{ padding: '10px 16px', fontSize: '12px', color: '#555', maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <td className="hidden md:table-cell" style={{ padding: '10px 16px', fontSize: '12px', color: '#555', maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
         {cotation?.geste_prioritaire ?? <span style={{ color: '#333' }}>—</span>}
       </td>
-      <td style={{ padding: '10px 16px', fontSize: '12px', color: '#555', textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+      <td className="hidden md:table-cell" style={{ padding: '10px 16px', fontSize: '12px', color: '#555', textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
         {cotation ? new Date(cotation.date_visite).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) : <span style={{ color: '#333' }}>—</span>}
       </td>
     </tr>

@@ -39,7 +39,7 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
     {
       label: 'Moyenne équipe',
       value: moyenneEquipe,
-      sub: '/ 4',
+      sub: '/ 3',
       color: '#60A5FA',
       accentColor: '#3B82F6',
       icon: TrendingUp,
@@ -55,7 +55,7 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
     {
       label: 'Modèles',
       value: modeles,
-      sub: 'niveau 3+',
+      sub: 'niveau 3',
       color: '#4ADE80',
       accentColor: '#22C55E',
       icon: Star,
@@ -71,7 +71,7 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
   ]
 
   return (
-    <div className="grid grid-cols-4 gap-3 mb-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
       {cards.map(({ label, value, sub, color, accentColor, icon: Icon }) => (
         <div key={label} style={{
           background: '#1C1C1C',

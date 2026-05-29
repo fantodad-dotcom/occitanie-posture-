@@ -107,20 +107,20 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
         <p style={{ color: '#666' }} className="text-sm">Questions adaptées au niveau actuel du délégué sur chaque axe.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
         {/* Sélecteur délégué */}
         <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '16px' }}>
           <div style={{ color: '#666', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '12px' }}>
             Délégué
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-1 md:pb-0">
             {delegues.map(d => {
               const c = cotationsMap.get(d.id)
               const vals = c ? [c.interpeller, c.debattre, c.engager].filter((v): v is number => v !== null) : []
               const avg = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null
               return (
                 <button key={d.id} onClick={() => setSelectedId(d.id)}
-                  className="flex items-center justify-between px-3 py-2 rounded-md text-left transition-all duration-150 cursor-pointer w-full"
+                  className="flex items-center justify-between gap-2 px-3 py-2 rounded-md text-left transition-all duration-150 cursor-pointer shrink-0 md:w-full"
                   style={selectedId === d.id
                     ? { background: 'rgba(99,102,241,0.15)', color: '#818CF8' }
                     : { color: '#888', background: 'transparent' }}>
@@ -139,10 +139,10 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
         {/* Questions */}
         <div className="col-span-2">
           {/* Axe selector */}
-          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '4px', display: 'inline-flex', gap: '2px', marginBottom: '16px' }}>
+          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '4px', display: 'flex', gap: '2px', marginBottom: '16px' }}>
             {AXES.map(axe => (
               <button key={axe} onClick={() => setSelectedAxe(axe)}
-                className="px-4 py-2 rounded-md text-xs font-medium transition-all cursor-pointer"
+                className="flex-1 px-4 py-2 rounded-md text-xs font-medium transition-all cursor-pointer"
                 style={selectedAxe === axe
                   ? { background: AXE_LABELS[axe].bg, color: AXE_LABELS[axe].color, border: `1px solid ${AXE_LABELS[axe].color}33` }
                   : { color: '#666', background: 'transparent', border: '1px solid transparent' }}>
