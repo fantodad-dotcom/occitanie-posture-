@@ -22,7 +22,7 @@ export function NavLeft() {
 
   return (
     <nav style={{ background: '#141414', borderRight: '1px solid rgba(255,255,255,0.07)' }}
-         className="w-[220px] shrink-0 flex flex-col py-0 overflow-y-auto">
+         className="hidden md:flex w-[220px] shrink-0 flex-col py-0 overflow-y-auto">
       {/* Logo */}
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }} className="flex items-center gap-3 px-4 py-3.5">
         <div style={{ background: 'linear-gradient(135deg, #6366F1, #4F46E5)', boxShadow: '0 0 0 1px rgba(99,102,241,0.3)' }}
