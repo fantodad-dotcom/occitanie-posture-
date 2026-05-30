@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Users, ClipboardPlus, CalendarDays, Trophy, HelpCircle, Zap, Map, ChevronUp } from 'lucide-react'
+import { Users, ClipboardPlus, CalendarDays, Trophy, HelpCircle, Zap, Map, ChevronUp, Settings } from 'lucide-react'
 
 const TABS_MAIN = [
   { href: '/', icon: Users, label: 'Équipe' },
@@ -15,6 +15,7 @@ const COACHING_ITEMS = [
   { href: '/coaching', icon: HelpCircle, label: 'Questions E&C', desc: 'Questions adaptées au niveau du délégué' },
   { href: '/debrief', icon: Zap, label: 'Auto-débrief', desc: 'Protocole 7 questions après le DUO' },
   { href: '/feuille-de-route', icon: Map, label: 'Feuille de route', desc: 'Le chemin décidé et où vous en êtes' },
+  { href: '/parametres', icon: Settings, label: 'Paramètres', desc: 'Gérer les délégués et les données' },
 ]
 
 const COACHING_HREFS = COACHING_ITEMS.map(i => i.href)
@@ -46,10 +47,11 @@ export function NavBottom() {
           className="md:hidden fixed left-0 right-0 z-50"
           style={{
             bottom: `calc(64px + env(safe-area-inset-bottom))`,
-            background: '#1C1C1C',
+            background: 'rgba(15,15,15,0.92)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             borderTop: '1px solid rgba(255,255,255,0.12)',
-            borderBottom: '1px solid rgba(255,255,255,0.07)',
-            boxShadow: '0 -8px 32px rgba(0,0,0,0.4)',
+            boxShadow: '0 -8px 32px rgba(0,0,0,0.5)',
           }}
         >
           <div style={{ padding: '8px 0' }}>
@@ -62,17 +64,17 @@ export function NavBottom() {
                   style={{
                     display: 'flex', alignItems: 'center', gap: '14px',
                     width: '100%', padding: '12px 20px',
-                    background: active ? 'rgba(99,102,241,0.12)' : 'transparent',
+                    background: active ? 'rgba(200,113,78,0.12)' : 'transparent',
                     border: 'none', cursor: 'pointer',
                     transition: 'background 0.15s',
                   }}
                 >
                   <div style={{
                     width: '36px', height: '36px', borderRadius: '8px', flexShrink: 0,
-                    background: active ? 'rgba(99,102,241,0.2)' : 'rgba(255,255,255,0.06)',
+                    background: active ? 'rgba(200,113,78,0.2)' : 'rgba(255,255,255,0.06)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
-                    <Icon size={18} strokeWidth={active ? 2.5 : 1.75} style={{ color: active ? '#818CF8' : '#888' }} />
+                    <Icon size={18} strokeWidth={active ? 2.5 : 1.75} style={{ color: active ? '#E8956D' : '#888' }} />
                   </div>
                   <div style={{ textAlign: 'left' }}>
                     <div style={{ fontSize: '14px', fontWeight: active ? 600 : 500, color: active ? '#ECECEC' : '#DCDCDC' }}>
@@ -81,7 +83,7 @@ export function NavBottom() {
                     <div style={{ fontSize: '11px', color: '#666', marginTop: '1px' }}>{desc}</div>
                   </div>
                   {active && (
-                    <div style={{ marginLeft: 'auto', width: '6px', height: '6px', borderRadius: '50%', background: '#6366F1', flexShrink: 0 }} />
+                    <div style={{ marginLeft: 'auto', width: '6px', height: '6px', borderRadius: '50%', background: '#C8714E', flexShrink: 0 }} />
                   )}
                 </button>
               )
@@ -94,7 +96,9 @@ export function NavBottom() {
       <nav
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex"
         style={{
-          background: '#1C1C1C',
+          background: 'rgba(15,15,15,0.9)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           borderTop: '1px solid rgba(255,255,255,0.09)',
           paddingBottom: 'env(safe-area-inset-bottom)',
         }}
@@ -106,7 +110,7 @@ export function NavBottom() {
               key={href}
               href={href}
               className="flex-1 flex flex-col items-center justify-center py-2 gap-0.5"
-              style={{ color: active ? '#818CF8' : '#555' }}
+              style={{ color: active ? '#E8956D' : '#555' }}
             >
               <Icon size={22} strokeWidth={active ? 2.5 : 1.75} />
               <span style={{ fontSize: '10px', fontWeight: active ? 600 : 400 }}>{label}</span>
@@ -120,7 +124,7 @@ export function NavBottom() {
           className="flex-1 flex flex-col items-center justify-center py-2 gap-0.5"
           style={{
             background: 'none', border: 'none', cursor: 'pointer',
-            color: isCoachingActive || coachingOpen ? '#818CF8' : '#555',
+            color: isCoachingActive || coachingOpen ? '#E8956D' : '#555',
           }}
         >
           {coachingOpen

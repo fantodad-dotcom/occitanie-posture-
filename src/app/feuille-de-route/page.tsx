@@ -10,8 +10,8 @@ export default function FeuilleDeRoutePage() {
         </div>
 
         {/* Vision */}
-        <div style={{ background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '10px', padding: '20px', marginBottom: '16px' }}>
-          <div style={{ fontSize: '11px', color: '#818CF8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Vision</div>
+        <div style={{ background: 'rgba(200,113,78,0.08)', border: '1px solid rgba(200,113,78,0.2)', borderRadius: '10px', padding: '20px', marginBottom: '16px' }}>
+          <div style={{ fontSize: '11px', color: '#E8956D', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Vision</div>
           <p style={{ color: '#DCDCDC', fontSize: '14px', lineHeight: '1.7' }}>
             L&apos;état d&apos;esprit et la posture sont des leviers majeurs pour renforcer notre impact commercial et notre compétitivité. L&apos;enjeu collectif est simple : <strong style={{ color: '#fff' }}>faire passer la formation d&apos;un moment fort… à un vrai changement durable dans les pratiques.</strong>
           </p>
@@ -36,7 +36,7 @@ export default function FeuilleDeRoutePage() {
 
           <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '18px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'rgba(99,102,241,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818CF8', fontWeight: 800, fontSize: '12px' }}>2</div>
+              <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'rgba(200,113,78,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#E8956D', fontWeight: 800, fontSize: '12px' }}>2</div>
               <span style={{ color: '#ECECEC', fontSize: '13px', fontWeight: 600 }}>Notre rôle de coach</span>
             </div>
             <p style={{ color: '#888', fontSize: '12px', lineHeight: '1.6' }}>

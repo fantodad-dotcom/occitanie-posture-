@@ -21,7 +21,7 @@ export function TeamHeatmap({ delegues, cotationsData, onSelectDelegue }: Props)
   )
 
   return (
-    <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', overflow: 'hidden' }}>
+    <div style={{ background: 'rgba(22,22,22,0.7)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', overflow: 'hidden' }}>
 
       {/* ── Mobile cards (< md) ── */}
       <div className="md:hidden" style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -45,7 +45,7 @@ export function TeamHeatmap({ delegues, cotationsData, onSelectDelegue }: Props)
               aria-label={`Voir le profil de ${d.nom}`}
               style={{
                 display: 'block', width: '100%', textAlign: 'left',
-                background: hasUrgent ? 'rgba(248,81,73,0.05)' : '#242424',
+                background: hasUrgent ? 'rgba(248,81,73,0.06)' : 'rgba(30,30,30,0.6)',
                 border: `1px solid ${hasUrgent ? 'rgba(248,81,73,0.2)' : 'rgba(255,255,255,0.07)'}`,
                 borderRadius: '10px', padding: '14px 16px',
                 cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s',

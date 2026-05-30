@@ -79,8 +79,10 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
       {/* Ligne de contexte — toujours visible */}
       <div style={{
         display: 'flex', gap: '0',
-        background: '#1C1C1C',
-        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'rgba(22,22,22,0.7)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: '1px solid rgba(255,255,255,0.09)',
         borderRadius: '10px',
         overflow: 'hidden',
       }}>
@@ -105,7 +107,7 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
             value: dvCeMois,
             label: 'DUOs ce mois',
             sub: 'planifiés',
-            color: dvCeMois > 0 ? '#818CF8' : '#555',
+            color: dvCeMois > 0 ? '#E8956D' : '#555',
           },
           ...(sansCotation > 0 ? [{
             value: sansCotation,

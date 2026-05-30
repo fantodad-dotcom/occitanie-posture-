@@ -144,7 +144,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
             padding: '14px',
             borderRadius: '10px',
             border: 'none',
-            background: canSubmit && !loading ? '#6366F1' : 'rgba(99,102,241,0.25)',
+            background: canSubmit && !loading ? '#C8714E' : 'rgba(200,113,78,0.25)',
             color: canSubmit && !loading ? '#fff' : 'rgba(255,255,255,0.3)',
             fontSize: '14px',
             fontWeight: 600,

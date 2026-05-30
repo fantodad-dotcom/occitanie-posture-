@@ -110,7 +110,7 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
                 <button key={d.id} onClick={() => setSelectedId(d.id)}
                   className="flex items-center justify-between gap-2 px-3 py-2 rounded-md text-left transition-all duration-150 cursor-pointer shrink-0 md:w-full"
                   style={selectedId === d.id
-                    ? { background: 'rgba(99,102,241,0.15)', color: '#818CF8' }
+                    ? { background: 'rgba(200,113,78,0.15)', color: '#E8956D' }
                     : { color: '#888', background: 'transparent' }}>
                   <span className="text-sm font-medium">{d.nom}</span>
                   {avg !== null && (
@@ -169,8 +169,8 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
                 ))}
               </div>
 
-              <div style={{ marginTop: '16px', padding: '12px 14px', background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.15)', borderRadius: '8px', fontSize: '11px', color: '#888', lineHeight: '1.6' }}>
-                <strong style={{ color: '#818CF8' }}>Règle E&C :</strong> Maximum 1 geste prioritaire par délégué. Faits ≠ impressions. Observer ≠ évaluer.
+              <div style={{ marginTop: '16px', padding: '12px 14px', background: 'rgba(200,113,78,0.08)', border: '1px solid rgba(200,113,78,0.15)', borderRadius: '8px', fontSize: '11px', color: '#888', lineHeight: '1.6' }}>
+                <strong style={{ color: '#E8956D' }}>Règle E&C :</strong> Maximum 1 geste prioritaire par délégué. Faits ≠ impressions. Observer ≠ évaluer.
               </div>
             </div>
           )}

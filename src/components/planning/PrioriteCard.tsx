@@ -40,7 +40,7 @@ export function PrioriteCard({ delegue, cotation, dvPlanifiee, semainsSansDV, st
         <div>
           <Link href={`/delegue/${delegue.id}`}
             style={{ color: '#ECECEC', fontWeight: 600, fontSize: '14px', textDecoration: 'none', transition: 'color 0.15s' }}
-            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#818CF8'}
+            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#E8956D'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#ECECEC'}
           >
             {delegue.nom}
@@ -96,7 +96,7 @@ export function PrioriteCard({ delegue, cotation, dvPlanifiee, semainsSansDV, st
             disabled={!date || loading}
             style={{
               padding: '7px 14px', borderRadius: '8px', border: 'none', fontSize: '13px', fontWeight: 600,
-              background: date && !loading ? '#6366F1' : 'rgba(99,102,241,0.25)',
+              background: date && !loading ? '#C8714E' : 'rgba(200,113,78,0.25)',
               color: date && !loading ? '#fff' : 'rgba(255,255,255,0.3)',
               cursor: date && !loading ? 'pointer' : 'not-allowed',
               transition: 'background 0.15s',

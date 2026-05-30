@@ -58,7 +58,7 @@ export function DebriefClient({ delegues }: Props) {
                 onClick={() => { setSelectedDelegue(d); setStep(1) }}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all cursor-pointer w-full hover:bg-white/5"
                 style={{ background: '#242424', border: '1px solid rgba(255,255,255,0.05)', color: '#DCDCDC' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(99,102,241,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818CF8', fontWeight: 700, fontSize: '12px', flexShrink: 0 }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(200,113,78,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#E8956D', fontWeight: 700, fontSize: '12px', flexShrink: 0 }}>
                   {d.nom.charAt(0)}
                 </div>
                 <div>
@@ -82,14 +82,14 @@ export function DebriefClient({ delegues }: Props) {
             <div style={{ color: '#666', fontSize: '12px', marginBottom: '2px' }}>Débrief avec {selectedDelegue?.nom}</div>
             <h1 className="text-base font-semibold text-white">Question {step} / 7</h1>
           </div>
-          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px', padding: '4px 12px', fontSize: '11px', color: '#818CF8', fontWeight: 600 }}>
+          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px', padding: '4px 12px', fontSize: '11px', color: '#E8956D', fontWeight: 600 }}>
             {currentQ.axe}
           </div>
         </div>
 
         {/* Progress */}
         <div style={{ height: '3px', background: '#242424', borderRadius: '2px', marginBottom: '24px', overflow: 'hidden' }}>
-          <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg, #6366F1, #818CF8)', borderRadius: '2px', transition: 'width 0.4s ease' }} />
+          <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg, #C8714E, #E8956D)', borderRadius: '2px', transition: 'width 0.4s ease' }} />
         </div>
 
         {/* Question */}
@@ -119,7 +119,7 @@ export function DebriefClient({ delegues }: Props) {
             </button>
           )}
           <button onClick={() => setStep(s => s + 1)}
-            style={{ flex: 1, background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.3)', color: '#818CF8', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>
+            style={{ flex: 1, background: 'rgba(200,113,78,0.2)', border: '1px solid rgba(200,113,78,0.3)', color: '#E8956D', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>
             {step === 7 ? 'Voir le résumé →' : 'Question suivante →'}
           </button>
         </div>
@@ -147,8 +147,8 @@ export function DebriefClient({ delegues }: Props) {
         ))}
       </div>
 
-      <div style={{ background: '#1C1C1C', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '10px', padding: '16px', marginBottom: '16px' }}>
-        <div style={{ fontSize: '12px', color: '#818CF8', fontWeight: 600, marginBottom: '8px' }}>Geste prioritaire retenu</div>
+      <div style={{ background: '#1C1C1C', border: '1px solid rgba(200,113,78,0.2)', borderRadius: '10px', padding: '16px', marginBottom: '16px' }}>
+        <div style={{ fontSize: '12px', color: '#E8956D', fontWeight: 600, marginBottom: '8px' }}>Geste prioritaire retenu</div>
         <input value={geste} onChange={e => setGeste(e.target.value)}
           placeholder="1 geste, 1 axe, 1 comportement observable..."
           style={{ width: '100%', background: '#242424', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '6px', padding: '10px 12px', color: '#ECECEC', fontSize: '13px', outline: 'none', fontFamily: 'inherit' }} />
@@ -160,7 +160,7 @@ export function DebriefClient({ delegues }: Props) {
           Nouveau débrief
         </button>
         <button onClick={handleTerminer} disabled={saving}
-          style={{ flex: 1, background: saving ? 'rgba(99,102,241,0.1)' : 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.3)', color: saving ? 'rgba(129,140,248,0.5)' : '#818CF8', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: saving ? 'not-allowed' : 'pointer' }}>
+          style={{ flex: 1, background: saving ? 'rgba(200,113,78,0.1)' : 'rgba(200,113,78,0.2)', border: '1px solid rgba(200,113,78,0.3)', color: saving ? 'rgba(129,140,248,0.5)' : '#E8956D', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: saving ? 'not-allowed' : 'pointer' }}>
           {saving ? 'Enregistrement…' : 'Terminer →'}
         </button>
       </div>

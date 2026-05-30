@@ -9,7 +9,7 @@ type Props = {
 
 export function AppShell({ children, referentielSidebar }: Props) {
   return (
-    <div className="flex h-screen overflow-hidden" style={{ background: '#141414' }}>
+    <div className="flex h-screen overflow-hidden" style={{ background: 'transparent' }}>
       <NavLeft />
       <main className="flex-1 overflow-y-auto min-w-0 pb-[calc(64px+env(safe-area-inset-bottom))] md:pb-0">
         {children}

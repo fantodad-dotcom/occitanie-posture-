@@ -24,7 +24,7 @@ export function DelegueRow({ delegue, cotation, onClick }: Props) {
         <button
           onClick={onClick}
           style={{ display: 'flex', alignItems: 'center', textAlign: 'left', fontSize: '13px', fontWeight: 500, color: '#DCDCDC', cursor: 'pointer', background: 'none', border: 'none', width: '100%', padding: 0, transition: 'color 150ms' }}
-          onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#818CF8'}
+          onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#E8956D'}
           onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#DCDCDC'}
           aria-label={`Voir le profil de ${delegue.nom}`}
         >
