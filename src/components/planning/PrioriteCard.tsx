@@ -15,16 +15,16 @@ type Props = {
   statut: Statut
 }
 
-const STATUT_CONFIG = {
-  urgent: { label: '🔴 Urgent', bg: 'bg-red-950/30 border-red-900', badge: 'text-red-400' },
-  a_planifier: { label: '🟡 À planifier', bg: 'bg-yellow-950/20 border-yellow-900/50', badge: 'text-yellow-400' },
-  ok: { label: '🟢 OK', bg: 'bg-green-950/20 border-green-900/50', badge: 'text-green-400' },
+const STATUT_CONFIG: Record<Statut, { label: string; color: string; bg: string; border: string }> = {
+  urgent:     { label: 'Urgent',      color: '#f85149', bg: 'rgba(248,81,73,0.06)',   border: 'rgba(248,81,73,0.25)' },
+  a_planifier:{ label: 'À planifier', color: '#f0883e', bg: 'rgba(240,136,62,0.06)',  border: 'rgba(240,136,62,0.2)' },
+  ok:         { label: 'OK',          color: '#3fb950', bg: 'rgba(63,185,80,0.05)',   border: 'rgba(63,185,80,0.18)' },
 }
 
 export function PrioriteCard({ delegue, cotation, dvPlanifiee, semainsSansDV, statut }: Props) {
   const [date, setDate] = useState('')
   const [loading, setLoading] = useState(false)
-  const config = STATUT_CONFIG[statut]
+  const cfg = STATUT_CONFIG[statut]
 
   async function handlePlanifier() {
     if (!date) return
@@ -34,48 +34,73 @@ export function PrioriteCard({ delegue, cotation, dvPlanifiee, semainsSansDV, st
   }
 
   return (
-    <div className={`border rounded-lg p-4 ${config.bg}`}>
-      <div className="flex items-start justify-between mb-3">
+    <div style={{ background: cfg.bg, border: `1px solid ${cfg.border}`, borderRadius: '10px', padding: '16px' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
         <div>
-          <Link href={`/delegue/${delegue.id}`} className="text-white font-semibold hover:text-blue-400 transition-colors">
+          <Link href={`/delegue/${delegue.id}`}
+            style={{ color: '#ECECEC', fontWeight: 600, fontSize: '14px', textDecoration: 'none', transition: 'color 0.15s' }}
+            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#818CF8'}
+            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#ECECEC'}
+          >
             {delegue.nom}
           </Link>
-          {delegue.secteur && <p className="text-gray-500 text-xs">{delegue.secteur}</p>}
+          {delegue.secteur && (
+            <p style={{ color: '#666', fontSize: '11px', marginTop: '2px' }}>{delegue.secteur}</p>
+          )}
         </div>
-        <span className={`text-xs font-medium ${config.badge}`}>{config.label}</span>
-      </div>
-
-      <div className="flex gap-2 mb-3">
-        <ScoreBadge score={cotation?.interpeller ?? null} size="sm" />
-        <ScoreBadge score={cotation?.debattre ?? null} size="sm" />
-        <ScoreBadge score={cotation?.engager ?? null} size="sm" />
-        <span className="text-xs text-gray-500 ml-auto">
-          {semainsSansDV === 0 ? 'DV cette semaine' : `${semainsSansDV} sem. sans DV`}
+        <span style={{
+          fontSize: '10px', fontWeight: 600, color: cfg.color,
+          background: `${cfg.color}14`, border: `1px solid ${cfg.color}33`,
+          padding: '2px 8px', borderRadius: '20px',
+        }}>
+          {cfg.label}
         </span>
       </div>
 
+      {/* Scores + semaines */}
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' }}>
+        <ScoreBadge score={cotation?.interpeller ?? null} size="sm" />
+        <ScoreBadge score={cotation?.debattre ?? null} size="sm" />
+        <ScoreBadge score={cotation?.engager ?? null} size="sm" />
+        <span style={{ color: '#555', fontSize: '11px', marginLeft: 'auto' }}>
+          {semainsSansDV === 0 ? 'DUO cette semaine' : `${semainsSansDV} sem. sans DUO`}
+        </span>
+      </div>
+
+      {/* DV planifiée ou formulaire */}
       {dvPlanifiee ? (
-        <div className="flex items-center justify-between bg-gray-800/50 rounded px-3 py-2 text-sm">
-          <span className="text-gray-300">DV prévue le {new Date(dvPlanifiee.date_prevue).toLocaleDateString('fr-FR')}</span>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.04)', borderRadius: '6px', padding: '8px 12px' }}>
+          <span style={{ color: '#DCDCDC', fontSize: '13px' }}>
+            DUO prévu le {new Date(dvPlanifiee.date_prevue).toLocaleDateString('fr-FR')}
+          </span>
           <button
             onClick={() => marquerRealisee(dvPlanifiee.id)}
-            className="text-xs text-green-400 hover:text-green-300"
+            style={{ color: '#3fb950', fontSize: '12px', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', transition: 'color 0.15s' }}
+            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#5fd070'}
+            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#3fb950'}
           >
-            ✓ Réalisée
+            Réalisé
           </button>
         </div>
       ) : (
-        <div className="flex gap-2">
+        <div style={{ display: 'flex', gap: '8px' }}>
           <input
             type="date"
             value={date}
             onChange={e => setDate(e.target.value)}
-            className="flex-1 px-2 py-1.5 bg-gray-800 border border-gray-700 rounded text-sm text-white"
+            style={{ flex: 1, padding: '7px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
           />
           <button
             onClick={handlePlanifier}
             disabled={!date || loading}
-            className="px-3 py-1.5 bg-blue-700 hover:bg-blue-600 disabled:opacity-40 text-white text-sm rounded transition-colors"
+            style={{
+              padding: '7px 14px', borderRadius: '8px', border: 'none', fontSize: '13px', fontWeight: 600,
+              background: date && !loading ? '#6366F1' : 'rgba(99,102,241,0.25)',
+              color: date && !loading ? '#fff' : 'rgba(255,255,255,0.3)',
+              cursor: date && !loading ? 'pointer' : 'not-allowed',
+              transition: 'background 0.15s',
+            }}
           >
             Planifier
           </button>

@@ -46,7 +46,7 @@ export default async function PlanningPage() {
   return (
     <AppShell referentielSidebar={<ReferentielSidebar interpeller={null} debattre={null} engager={null} />}>
       <div className="p-6">
-        <h1 className="text-xl font-bold text-white mb-6">📅 File de priorité DV</h1>
+        <h1 className="text-xl font-bold text-white mb-6">File de priorité DUO</h1>
         <div className="space-y-3">
           {items.map(({ delegue, cotation, dvPlanifiee, sem, statut }) => (
             <PrioriteCard

@@ -37,16 +37,16 @@ export default async function CompetitionPage() {
       />
     }>
       <div className="p-6 max-w-2xl">
-        <h1 className="text-xl font-bold text-white mb-6">🏆 Posture vs Marché</h1>
+        <h1 className="text-xl font-bold text-white mb-6">Posture vs Marché</h1>
         <GaugeObjectif actuel={pctProactifs} cible={60} />
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center">
-            <p className="text-gray-500 text-xs uppercase mb-1">Proactifs (niv. 3+)</p>
-            <p className="text-3xl font-bold text-green-400">{proactifs}</p>
+          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
+            <p style={{ color: '#888', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Proactifs (niv. 3)</p>
+            <p style={{ color: '#3fb950', fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>{proactifs}</p>
           </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center">
-            <p className="text-gray-500 text-xs uppercase mb-1">Réactifs (niv. 1-2)</p>
-            <p className="text-3xl font-bold text-red-400">{delegues.length - proactifs}</p>
+          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
+            <p style={{ color: '#888', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Réactifs (niv. 1-2)</p>
+            <p style={{ color: '#f85149', fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>{delegues.length - proactifs}</p>
           </div>
         </div>
         <RadarEquipe interpeller={moyI} debattre={moyD} engager={moyE} />
