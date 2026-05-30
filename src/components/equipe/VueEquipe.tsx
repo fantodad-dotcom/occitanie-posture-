@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { KpiCards } from './KpiCards'
 import { TeamHeatmap } from './TeamHeatmap'
@@ -17,7 +16,11 @@ export function VueEquipe({ delegues, cotationsData, dvCeMois }: Props) {
   const router = useRouter()
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
+      <div style={{ marginBottom: '16px' }}>
+        <h1 style={{ fontSize: '16px', fontWeight: 700, color: '#ECECEC', marginBottom: '2px' }}>Vue équipe</h1>
+        <p style={{ fontSize: '12px', color: '#888' }}>{delegues.length} délégués · Occitanie</p>
+      </div>
       <KpiCards delegues={delegues} cotationsData={cotationsData} dvCeMois={dvCeMois} />
       <TeamHeatmap
         delegues={delegues}

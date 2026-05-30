@@ -85,7 +85,7 @@ export function KpiCards({ delegues, cotationsData, dvCeMois }: Props) {
             <Icon size={15} style={{ color }} />
           </div>
           <p style={{ color, fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>{value}</p>
-          <p style={{ color: '#555', fontSize: '11px', marginTop: '6px' }}>{sub}</p>
+          <p style={{ color: '#666', fontSize: '11px', marginTop: '6px' }}>{sub}</p>
         </div>
       ))}
     </div>
