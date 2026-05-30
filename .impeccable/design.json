@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-30T00:00:00Z",
+  "title": "Design System: Occitanie Posture",
+  "extensions": {
+    "colorMeta": {
+      "bg":               { "role": "neutral",   "displayName": "Fond OLED",         "canonical": "#141414", "tonalRamp": ["#080808","#141414","#1C1C1C","#242424","#2A2A2A","#363636","#484848","#888888"] },
+      "surface":          { "role": "neutral",   "displayName": "Surface",            "canonical": "#1C1C1C", "tonalRamp": ["#0A0A0A","#141414","#1C1C1C","#242424","#2A2A2A","#383838","#4A4A4A","#888888"] },
+      "surface-raised":   { "role": "neutral",   "displayName": "Surface Relevée",   "canonical": "#242424", "tonalRamp": ["#101010","#181818","#202020","#242424","#2C2C2C","#3A3A3A","#4C4C4C","#909090"] },
+      "text":             { "role": "neutral",   "displayName": "Texte Principal",    "canonical": "#ECECEC", "tonalRamp": ["#888888","#AAAAAA","#CCCCCC","#DCDCDC","#E4E4E4","#ECECEC","#F4F4F4","#FFFFFF"] },
+      "text-muted":       { "role": "neutral",   "displayName": "Texte Muted",        "canonical": "#888888", "tonalRamp": ["#333333","#444444","#555555","#666666","#777777","#888888","#999999","#AAAAAA"] },
+      "accent":           { "role": "primary",   "displayName": "Indigo Cockpit",     "canonical": "#6366F1", "tonalRamp": ["#1E1F5C","#2D2F8C","#3B3DBF","#4F51D9","#6366F1","#818CF8","#A5ABFA","#C7CCFC"] },
+      "accent-ink":       { "role": "primary",   "displayName": "Indigo Ink",         "canonical": "#818CF8", "tonalRamp": ["#2D2F8C","#3B3DBF","#4F51D9","#6366F1","#818CF8","#A5ABFA","#C7CCFC","#E0E3FE"] },
+      "axis-interpeller": { "role": "secondary", "displayName": "Sky Signal",         "canonical": "#38BDF8", "tonalRamp": ["#082840","#0E4A74","#1470AE","#1E96D8","#38BDF8","#6CCEF9","#9DDFFA","#CFF0FD"] },
+      "axis-debattre":    { "role": "secondary", "displayName": "Green Signal",       "canonical": "#4ADE80", "tonalRamp": ["#0B3018","#145C2D","#1E8842","#2DB85B","#4ADE80","#74E99E","#9EF4BC","#CAFFDA"] },
+      "axis-engager":     { "role": "secondary", "displayName": "Amber Signal",       "canonical": "#FB923C", "tonalRamp": ["#3D1A04","#6E300A","#A04813","#CC6320","#FB923C","#FC9F55","#FDB876","#FED5AA"] },
+      "level-en-cours":   { "role": "tertiary",  "displayName": "Urgence",            "canonical": "#f85149", "tonalRamp": ["#3B0B09","#6E1614","#A12220","#CC3330","#f85149","#F97269","#FA9B94","#FCC4C0"] },
+      "level-acquis":     { "role": "tertiary",  "displayName": "Intermédiaire",      "canonical": "#f0883e", "tonalRamp": ["#3A1708","#6A2D10","#9B441A","#C45D24","#f0883e","#F39C5C","#F7B680","#FACDB0"] },
+      "level-expert":     { "role": "tertiary",  "displayName": "Expert",             "canonical": "#3fb950", "tonalRamp": ["#0B2C13","#145322","#1D7B32","#2B9E42","#3fb950","#65C874","#8DD695","#B6E8BE"] }
+    },
+    "typographyMeta": {
+      "heading": { "displayName": "Heading",  "purpose": "Titres de page. Un seul par page. Ne jamais utiliser pour des labels ou du corps." },
+      "body":    { "displayName": "Body",     "purpose": "Texte courant, descriptions, comportements attendus. Taille de base." },
+      "label":   { "displayName": "Label",    "purpose": "En-têtes de colonnes, labels de formulaire. MAJUSCULES, max 4 mots." },
+      "data":    { "displayName": "Data",     "purpose": "Chiffres KPI uniquement. 28px bold. Jamais utilisé pour du texte." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "micro",          "value": "150ms ease-out",                       "purpose": "Transitions d'état : hover, sélection, focus." },
+      { "name": "progress",       "value": "width 0.4s ease",                      "purpose": "Barre de progression du débrief." },
+      { "name": "reduced-motion", "value": "0.01ms",                              "purpose": "Toutes transitions désactivées si prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "mobile",  "value": "< 768px",  "note": "Sidebar masquée, bottom nav visible, layout vertical." },
+      { "name": "desktop", "value": ">= 768px", "note": "Sidebar 220px visible, bottom nav masquée, layout horizontal." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton Primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action principale de validation (Enregistrer le DUO, Terminer).",
+      "html": "<button class=\"ds-btn-primary\">Enregistrer le DUO</button>",
+      "css": ".ds-btn-primary { background: #6366F1; color: #ffffff; padding: 14px 16px; border-radius: 10px; border: none; font-family: 'Fira Sans', system-ui, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; transition: background 0.15s; } .ds-btn-primary:hover { background: #5558E8; } .ds-btn-primary:focus-visible { outline: 2px solid #6366F1; outline-offset: 2px; } .ds-btn-primary:disabled { background: rgba(99,102,241,0.25); color: rgba(255,255,255,0.3); cursor: not-allowed; }"
+    },
+    {
+      "name": "Bouton Ghost",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Actions secondaires (Question suivante, Terminer débrief, Retour).",
+      "html": "<button class=\"ds-btn-ghost\">Question suivante →</button>",
+      "css": ".ds-btn-ghost { background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.3); color: #818CF8; padding: 10px 20px; border-radius: 10px; font-family: 'Fira Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.15s; } .ds-btn-ghost:hover { background: rgba(99,102,241,0.3); } .ds-btn-ghost:focus-visible { outline: 2px solid #6366F1; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card Surface",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Bloc de contenu principal. Fond #1C1C1C, pas d'ombre.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-card-body\">Contenu de la carte</p></div>",
+      "css": ".ds-card { background: #1C1C1C; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 16px; } .ds-card-body { color: #ECECEC; font-family: 'Fira Sans', system-ui, sans-serif; font-size: 13px; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Input Text",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Champ de saisie texte (geste prioritaire, notes).",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"ds-input-ex\">Geste prioritaire</label><input class=\"ds-input\" id=\"ds-input-ex\" type=\"text\" placeholder=\"ex. Tenir le silence après le désaccord\" /></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-label { font-family: 'Fira Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.06em; } .ds-input { background: #242424; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 10px; color: #ECECEC; font-family: 'Fira Sans', system-ui, sans-serif; font-size: 13px; outline: none; transition: border-color 0.15s; } .ds-input::placeholder { color: #888; } .ds-input:focus-visible { outline: 2px solid #6366F1; outline-offset: 2px; }"
+    },
+    {
+      "name": "Score Badge",
+      "kind": "chip",
+      "description": "Badge de cotation E&C niveau 1/2/3. Couleur sémantique obligatoire.",
+      "html": "<span class=\"ds-badge ds-badge--expert\">3</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; font-family: 'Fira Sans', system-ui, sans-serif; font-size: 13px; font-weight: 700; } .ds-badge--en-cours { background: rgba(248,81,73,0.12); border: 1px solid rgba(248,81,73,0.3); color: #f85149; } .ds-badge--acquis { background: rgba(240,136,62,0.12); border: 1px solid rgba(240,136,62,0.3); color: #f0883e; } .ds-badge--expert { background: rgba(63,185,80,0.12); border: 1px solid rgba(63,185,80,0.3); color: #3fb950; } .ds-badge--unknown { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #444; }"
+    },
+    {
+      "name": "Nav Item (desktop)",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "Élément de navigation sidebar desktop. Actif avec indicateur gauche indigo.",
+      "html": "<a class=\"ds-nav-item ds-nav-item--active\" href=\"#\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>Vue équipe</a>",
+      "css": ".ds-nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; font-family: 'Fira Sans', system-ui, sans-serif; font-size: 13px; font-weight: 500; color: #888; text-decoration: none; position: relative; transition: background 0.15s, color 0.15s; } .ds-nav-item:hover { background: rgba(255,255,255,0.05); color: #ECECEC; } .ds-nav-item--active { background: rgba(99,102,241,0.15); color: #818CF8; font-weight: 600; } .ds-nav-item--active::before { content: ''; position: absolute; left: 0; top: 25%; bottom: 25%; width: 2px; background: #6366F1; border-radius: 0 2px 2px 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La Salle de Contrôle",
+    "overview": "Un RSM qui ouvre l'app entre deux rendez-vous n'a pas le temps de chercher. Il a besoin d'une vue instantanée : qui progresse, qui est en difficulté, quelle action prendre. Ce design system traduit cette exigence en une interface qui s'efface devant les données. La Salle de Contrôle ne décore pas, elle opère. Chaque couleur est un signal, chaque espace est de l'air pour lire, chaque interaction confirme sans ambiguïté.\n\nLe fond anthracite profond (#141414) est un choix délibéré pour un usage terrain. Damien consulte l'app dans des couloirs d'hôpital, en voiture, parfois dans des salles sombres entre deux visites. Le fond sombre réduit la fatigue visuelle et donne aux couleurs fonctionnelles leur pouvoir de signal.",
+    "keyCharacteristics": [
+      "Fond anthracite OLED, trois niveaux de surface (#141414 / #1C1C1C / #242424)",
+      "Accent indigo unique (#6366F1), utilisé sparingly pour les actions et l'état actif",
+      "Trois couleurs E&C fonctionnelles (bleu/vert/orange) pour les axes métier",
+      "Trois couleurs de niveau (rouge/orange/vert) pour la progression",
+      "Fira Sans en poids unique par rôle : 700 titres, 600 labels, 400 corps",
+      "Inline styles partout : Tailwind v4 opacity modifiers instables dans ce projet"
+    ],
+    "rules": [
+      { "name": "La Règle du Signal Unique",     "body": "Chaque couleur fonctionnelle a un rôle et un seul. Les couleurs E&C pour les axes, les couleurs de niveau pour la progression, l'indigo pour les actions. Mélanger ces rôles détruit la grammaire visuelle.", "section": "colors" },
+      { "name": "La Règle du Contraste Minimum", "body": "Aucun texte en dessous de #888888 sur fond sombre. #666 et en dessous échouent WCAG AA.", "section": "colors" },
+      { "name": "La Règle de la Famille Unique",  "body": "Une seule famille, quatre poids. Toute introduction d'une seconde famille doit être justifiée par un besoin fonctionnel démontrable.", "section": "typography" },
+      { "name": "La Règle du Relief Tonal",       "body": "Surface au-dessus = plus claire. bg < surface < input < overlay. Jamais inverser. Jamais ajouter une box-shadow là où un changement de background suffit.", "section": "elevation" }
+    ],
+    "dos": [
+      "Utiliser #888 minimum pour tout texte secondaire sur fond sombre.",
+      "Réserver l'indigo aux actions et états actifs exclusivement.",
+      "Associer htmlFor + id à chaque paire label/input dans les formulaires.",
+      "Utiliser touch-action: manipulation sur tous les éléments interactifs.",
+      "Cibler les propriétés de transition explicitement. Jamais transition: all.",
+      "Utiliser des inline styles pour les couleurs et opacités dynamiques.",
+      "Respecter env(safe-area-inset-bottom) sur la nav mobile.",
+      "Maintenir la terminologie figée : DUO, E&C, Interpeller, Débattre, Engager."
+    ],
+    "donts": [
+      "Utiliser glassmorphism, dégradés de texte, ou effets décoratifs.",
+      "Utiliser une palette claire ou blanche.",
+      "Utiliser les couleurs E&C pour autre chose que leurs axes respectifs.",
+      "Utiliser les couleurs de niveau comme couleurs d'interface génériques.",
+      "Imbriquer des cartes.",
+      "Ajouter box-shadow sur les cartes ou les boutons.",
+      "Utiliser des emojis comme éléments d'interface.",
+      "Reproduire les dashboards colorés type Duolingo, Notion, ou Linear.",
+      "Utiliser des border-radius > 12px sur les cartes.",
+      "Descendre sous 13px pour le texte de contenu."
+    ]
+  }
+}
