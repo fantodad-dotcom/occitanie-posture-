@@ -26,6 +26,20 @@ body {
   color: var(--text);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Prevent accidental pull-to-refresh on mobile */
+  overscroll-behavior-y: contain;
+}
+
+/* Remove 300ms tap delay on all interactive elements */
+a, button, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Minimum 44px touch targets on mobile (excl. badges & inline elements) */
+@media (max-width: 767px) {
+  nav a, nav button {
+    min-height: 44px;
+  }
 }
 
 * {
