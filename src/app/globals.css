@@ -35,6 +35,13 @@ a, button, [role="button"] {
   touch-action: manipulation;
 }
 
+/* Focus visible — accessible keyboard navigation */
+:focus-visible {
+  outline: 2px solid #6366F1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Minimum 44px touch targets on mobile (excl. badges & inline elements) */
 @media (max-width: 767px) {
   nav a, nav button {

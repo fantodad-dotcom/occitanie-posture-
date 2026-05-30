@@ -24,10 +24,6 @@ const QUESTIONS_EC = {
       "Est-ce que tu as adapté ton accroche à ce médecin en particulier, ou c'était le même script ?",
       "À quel moment tu as senti que tu avais créé un écart dans sa tête ?",
     ],
-    4: [
-      "Comment tu vas reproduire ce niveau d'interpellation sur le prochain médecin difficile ?",
-      "Qu'est-ce que tu observes chez un médecin qui te dit que l'interpellation a fonctionné ?",
-    ],
   },
   debattre: {
     1: [
@@ -46,10 +42,6 @@ const QUESTIONS_EC = {
       "Comment tu as maintenu ta conviction sans entrer dans un duel ?",
       "Est-ce que le médecin s'est repositionné de lui-même, ou tu l'as poussé à le faire ?",
     ],
-    4: [
-      "Est-ce que tu es sorti de cette visite sans avoir tout dit — et ça t'allait ?",
-      "Comment tu peux transmettre cette façon de tenir l'espace à Alexandre ou Thomas ?",
-    ],
   },
   engager: {
     1: [
@@ -67,10 +59,6 @@ const QUESTIONS_EC = {
       "Comment tu as construit le lien entre ce qui avait retenu son attention et ce que tu lui as demandé ?",
       "L'engagement qu'il a pris — c'est lui qui l'a formulé, ou toi ?",
       "Tu sors avec quel prochain pas concret ?",
-    ],
-    4: [
-      "À quel moment tu as senti que l'engagement allait émerger naturellement de la conversation ?",
-      "Comment tu gères quand il reste un désaccord résiduel et que tu ne veux ni forcer ni renoncer ?",
     ],
   },
 }
@@ -97,7 +85,7 @@ export function CoachingClient({ delegues, cotationsData }: Props) {
   const selected = delegues.find(d => d.id === selectedId)
   const cotation = selectedId ? cotationsMap.get(selectedId) : null
   const level = cotation ? (cotation[selectedAxe] ?? 1) : 1
-  const questions = QUESTIONS_EC[selectedAxe][level as 1 | 2 | 3 | 4] ?? QUESTIONS_EC[selectedAxe][1]
+  const questions = QUESTIONS_EC[selectedAxe][level as 1 | 2 | 3] ?? QUESTIONS_EC[selectedAxe][1]
 
   return (
     <div className="p-6">

@@ -11,7 +11,7 @@ export type Cotation = {
   id: string
   delegue_id: string
   date_visite: string
-  interpeller: number | null  // 1-4, null = non observé
+  interpeller: number | null  // 1-3, null = non observé
   debattre: number | null
   engager: number | null
   geste_prioritaire: string | null
