@@ -16,7 +16,7 @@ export function AppShell({ children, referentielSidebar }: Props) {
         <div
           className="md:hidden sticky top-0 z-30 flex items-center gap-2.5 px-4"
           style={{
-            height: '52px',
+            height: '58px',
             background: 'rgba(15,15,15,0.88)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
@@ -27,8 +27,8 @@ export function AppShell({ children, referentielSidebar }: Props) {
           <img
             src="/logo-rb.png"
             alt="Logo Occitanie Posture"
-            width={36}
-            height={36}
+            width={48}
+            height={48}
             style={{ objectFit: 'contain', flexShrink: 0, mixBlendMode: 'screen' }}
           />
           <span style={{ fontFamily: 'Lora, Georgia, serif', fontSize: '14px', fontWeight: 700, color: '#ECECEC' }}>
