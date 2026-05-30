@@ -16,18 +16,22 @@ export function AppShell({ children, referentielSidebar }: Props) {
         <div
           className="md:hidden sticky top-0 z-30 flex items-center gap-2.5 px-4"
           style={{
-            height: '48px',
+            height: '52px',
             background: 'rgba(15,15,15,0.88)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             borderBottom: '1px solid rgba(255,255,255,0.07)',
           }}
         >
-          <div style={{ width: '26px', height: '26px', borderRadius: '6px', overflow: 'hidden', background: '#1a1a1a', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-rb.png" alt="Logo" width={26} height={26} style={{ objectFit: 'contain' }} />
-          </div>
-          <span style={{ fontFamily: 'Lora, Georgia, serif', fontSize: '13px', fontWeight: 700, color: '#ECECEC' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-rb.png"
+            alt="Logo Occitanie Posture"
+            width={36}
+            height={36}
+            style={{ objectFit: 'contain', flexShrink: 0, mixBlendMode: 'screen' }}
+          />
+          <span style={{ fontFamily: 'Lora, Georgia, serif', fontSize: '14px', fontWeight: 700, color: '#ECECEC' }}>
             Occitanie Posture
           </span>
         </div>
