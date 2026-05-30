@@ -39,6 +39,24 @@ export async function getAllCotations(): Promise<Cotation[]> {
   return data ?? []
 }
 
+export async function updateGesteCotation(delegueId: string, geste: string): Promise<void> {
+  const supabase = await createClient()
+  // Récupère l'ID de la dernière cotation du délégué
+  const { data, error: fetchError } = await supabase
+    .from('cotations')
+    .select('id')
+    .eq('delegue_id', delegueId)
+    .order('date_visite', { ascending: false })
+    .limit(1)
+    .single()
+  if (fetchError) throw new Error(fetchError.message)
+  const { error } = await supabase
+    .from('cotations')
+    .update({ geste_prioritaire: geste })
+    .eq('id', data.id)
+  if (error) throw new Error(error.message)
+}
+
 export async function createCotation(input: {
   delegue_id: string
   date_visite: string

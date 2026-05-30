@@ -1,5 +1,7 @@
 'use client'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { saveGesteDebrief } from '@/app/debrief/actions'
 import type { Delegue } from '@/lib/supabase/types'
 
 const QUESTIONS_DEBRIEF = [
@@ -15,10 +17,28 @@ const QUESTIONS_DEBRIEF = [
 type Props = { delegues: Delegue[] }
 
 export function DebriefClient({ delegues }: Props) {
+  const router = useRouter()
   const [step, setStep] = useState(0) // 0 = select delegate, 1-7 = questions, 8 = summary
   const [selectedDelegue, setSelectedDelegue] = useState<Delegue | null>(null)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [geste, setGeste] = useState('')
+  const [saving, setSaving] = useState(false)
+
+  async function handleTerminer() {
+    if (!selectedDelegue) return
+    setSaving(true)
+    try {
+      await saveGesteDebrief(selectedDelegue.id, geste)
+    } catch (e) {
+      console.error('Erreur saveGesteDebrief:', e)
+    } finally {
+      setSaving(false)
+      setStep(0)
+      setAnswers({})
+      setGeste('')
+      router.push(`/delegue/${selectedDelegue.id}`)
+    }
+  }
 
   const currentQ = QUESTIONS_DEBRIEF[step - 1]
   const progress = step === 0 ? 0 : Math.round((step / 7) * 100)
@@ -139,9 +159,9 @@ export function DebriefClient({ delegues }: Props) {
           style={{ flex: 1, background: '#242424', border: '1px solid rgba(255,255,255,0.07)', color: '#888', padding: '10px', borderRadius: '8px', fontSize: '13px', cursor: 'pointer' }}>
           Nouveau débrief
         </button>
-        <button onClick={() => { setStep(0); setAnswers({}); setGeste('') }}
-          style={{ flex: 1, background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.3)', color: '#818CF8', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>
-          Terminer
+        <button onClick={handleTerminer} disabled={saving}
+          style={{ flex: 1, background: saving ? 'rgba(99,102,241,0.1)' : 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.3)', color: saving ? 'rgba(129,140,248,0.5)' : '#818CF8', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: saving ? 'not-allowed' : 'pointer' }}>
+          {saving ? 'Enregistrement…' : 'Terminer →'}
         </button>
       </div>
     </div>
