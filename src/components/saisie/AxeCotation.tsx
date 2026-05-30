@@ -51,6 +51,8 @@ export function AxeCotation({ label, color, value, onChange, behaviors }: Props)
               key={n}
               type="button"
               onClick={() => onChange(isSelected ? null : n)}
+              onMouseEnter={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.borderColor = `${levelColor}55` }}
+              onMouseLeave={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)' }}
               style={{
                 flex: 1,
                 padding: '10px 8px 8px',
@@ -58,7 +60,7 @@ export function AxeCotation({ label, color, value, onChange, behaviors }: Props)
                 border: `2px solid ${isSelected ? levelColor : 'rgba(255,255,255,0.08)'}`,
                 background: isSelected ? `${levelColor}18` : 'rgba(255,255,255,0.03)',
                 cursor: 'pointer',
-                transition: 'all 0.15s',
+                transition: 'border-color 0.15s, background 0.15s, color 0.15s',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -83,6 +85,7 @@ export function AxeCotation({ label, color, value, onChange, behaviors }: Props)
         <button
           type="button"
           onClick={() => onChange(null)}
+          aria-label="Effacer la cotation"
           style={{
             width: '48px',
             borderRadius: '10px',
@@ -92,6 +95,7 @@ export function AxeCotation({ label, color, value, onChange, behaviors }: Props)
             fontSize: '16px',
             fontWeight: 700,
             color: value === null ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.15)',
+            transition: 'border-color 0.15s, background 0.15s',
           }}
         >
           ?

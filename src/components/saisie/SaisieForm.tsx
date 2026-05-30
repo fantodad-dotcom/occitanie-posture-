@@ -58,24 +58,26 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
         {/* Délégué + Date */}
         <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '16px', display: 'flex', gap: '12px' }}>
           <div style={{ flex: 2 }}>
-            <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+            <label htmlFor="select-delegue" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
               Délégué
             </label>
             <select
+              id="select-delegue"
               value={delegueId}
               onChange={e => setDelegueId(e.target.value)}
               required
-              style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: delegueId ? '#ECECEC' : '#555', fontSize: '13px', cursor: 'pointer' }}
+              style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: delegueId ? '#ECECEC' : '#888', fontSize: '13px', cursor: 'pointer' }}
             >
               <option value="">Sélectionner…</option>
               {delegues.map(d => <option key={d.id} value={d.id}>{d.nom}</option>)}
             </select>
           </div>
           <div style={{ flex: 1 }}>
-            <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+            <label htmlFor="input-date" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
               Date DUO
             </label>
             <input
+              id="input-date"
               type="date"
               value={date}
               onChange={e => setDate(e.target.value)}
@@ -105,29 +107,31 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
 
         {/* Geste prioritaire */}
         <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '12px' }}>
-          <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+          <label htmlFor="input-geste" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
             Geste prioritaire
           </label>
           <input
+            id="input-geste"
             type="text"
             value={geste}
             onChange={e => setGeste(e.target.value)}
             placeholder="ex. Tenir le silence après le désaccord"
             style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
           />
-          <p style={{ fontSize: '10px', color: '#444', marginTop: '6px' }}>Règle E&C — 1 seul geste par délégué.</p>
+          <p style={{ fontSize: '11px', color: '#666', marginTop: '6px' }}>1 seul geste par délégué.</p>
         </div>
 
         {/* Notes */}
         <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '20px' }}>
-          <label style={{ display: 'block', fontSize: '11px', color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
-            Notes de débrief <span style={{ color: '#444', fontWeight: 400, textTransform: 'none' }}>(optionnel)</span>
+          <label htmlFor="textarea-notes" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+            Notes <span style={{ color: '#666', fontWeight: 400, textTransform: 'none' }}>(optionnel)</span>
           </label>
           <textarea
+            id="textarea-notes"
             value={notes}
             onChange={e => setNotes(e.target.value)}
             rows={3}
-            style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px', resize: 'none', fontFamily: 'inherit', lineHeight: '1.6' }}
+            style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px', resize: 'vertical', fontFamily: 'inherit', lineHeight: '1.6' }}
           />
         </div>
 

@@ -11,9 +11,9 @@ export default async function SaisiePage({ searchParams }: Props) {
   return (
     <AppShell>
       <div className="py-6">
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <div style={{ maxWidth: '520px', margin: '0 auto', padding: '0 24px 8px' }}>
           <h1 style={{ fontSize: '16px', fontWeight: 700, color: '#ECECEC', marginBottom: '4px' }}>Saisie post-DUO</h1>
-          <p style={{ fontSize: '12px', color: '#555' }}>Évaluation E&C — 3 axes</p>
+          <p style={{ fontSize: '12px', color: '#888' }}>Évaluation E&C · 3 axes</p>
         </div>
         <SaisieForm delegues={delegues} preselectedId={delegue} />
       </div>
