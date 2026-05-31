@@ -56,7 +56,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
       <form onSubmit={handleSubmit} style={{ maxWidth: '520px', margin: '0 auto', padding: '0 24px 40px' }}>
 
         {/* Délégué + Date */}
-        <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '16px', display: 'flex', gap: '12px' }}>
+        <div style={{ background: 'rgba(22,22,22,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: '12px', padding: '16px', marginBottom: '16px', display: 'flex', gap: '12px' }}>
           <div style={{ flex: 2 }}>
             <label htmlFor="select-delegue" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
               Délégué
@@ -66,7 +66,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
               value={delegueId}
               onChange={e => setDelegueId(e.target.value)}
               required
-              style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: delegueId ? '#ECECEC' : '#888', fontSize: '13px', cursor: 'pointer' }}
+              style={{ width: '100%', padding: '8px 10px', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: delegueId ? '#ECECEC' : '#888', fontSize: '13px', cursor: 'pointer' }}
             >
               <option value="">Sélectionner…</option>
               {delegues.map(d => <option key={d.id} value={d.id}>{d.nom}</option>)}
@@ -81,7 +81,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
               type="date"
               value={date}
               onChange={e => setDate(e.target.value)}
-              style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
+              style={{ width: '100%', padding: '8px 10px', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
             />
           </div>
         </div>
@@ -93,7 +93,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
             { key: 'debattre' as const, label: 'Débattre', color: '#4ADE80', value: debattre, onChange: setDebattre },
             { key: 'engager' as const, label: 'Engager', color: '#FB923C', value: engager, onChange: setEngager },
           ].map(axe => (
-            <div key={axe.key} style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px' }}>
+            <div key={axe.key} style={{ background: 'rgba(22,22,22,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: '12px', padding: '16px' }}>
               <AxeCotation
                 label={axe.label}
                 color={axe.color}
@@ -106,7 +106,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
         </div>
 
         {/* Geste prioritaire */}
-        <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '12px' }}>
+        <div style={{ background: 'rgba(22,22,22,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: '12px', padding: '16px', marginBottom: '12px' }}>
           <label htmlFor="input-geste" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
             Geste prioritaire
           </label>
@@ -116,13 +116,13 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
             value={geste}
             onChange={e => setGeste(e.target.value)}
             placeholder="ex. Tenir le silence après le désaccord"
-            style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
+            style={{ width: '100%', padding: '8px 10px', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px' }}
           />
           <p style={{ fontSize: '11px', color: '#666', marginTop: '6px' }}>1 seul geste par délégué.</p>
         </div>
 
         {/* Notes */}
-        <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '16px', marginBottom: '20px' }}>
+        <div style={{ background: 'rgba(22,22,22,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: '12px', padding: '16px', marginBottom: '20px' }}>
           <label htmlFor="textarea-notes" style={{ display: 'block', fontSize: '11px', color: '#888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
             Notes <span style={{ color: '#666', fontWeight: 400, textTransform: 'none' }}>(optionnel)</span>
           </label>
@@ -131,7 +131,7 @@ export function SaisieForm({ delegues, preselectedId }: Props) {
             value={notes}
             onChange={e => setNotes(e.target.value)}
             rows={3}
-            style={{ width: '100%', padding: '8px 10px', background: '#242424', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px', resize: 'vertical', fontFamily: 'inherit', lineHeight: '1.6' }}
+            style={{ width: '100%', padding: '8px 10px', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#ECECEC', fontSize: '13px', resize: 'vertical', fontFamily: 'inherit', lineHeight: '1.6' }}
           />
         </div>
 
