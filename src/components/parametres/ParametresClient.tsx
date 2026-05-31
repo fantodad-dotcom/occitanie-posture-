@@ -16,6 +16,16 @@ type Props = {
   cotations: CotationAvecNom[]
 }
 
+const S = {
+  card: { background: 'rgba(22,22,22,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '16px' },
+  input: { background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '8px 12px', color: '#ECECEC', fontSize: '13px', outline: 'none', width: '100%' },
+  btn: { background: '#C8714E', color: '#fff', border: 'none', borderRadius: '8px', padding: '8px 14px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', transition: 'background 0.15s' },
+  btnGhost: { background: 'rgba(255,255,255,0.05)', color: '#888', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '7px 12px', fontSize: '12px', cursor: 'pointer', transition: 'background 0.15s' },
+  btnDanger: { background: 'rgba(248,81,73,0.1)', color: '#f85149', border: '1px solid rgba(248,81,73,0.2)', borderRadius: '8px', padding: '7px 12px', fontSize: '12px', cursor: 'pointer' },
+  sectionTitle: { fontFamily: 'Lora, Georgia, serif', fontSize: '14px', fontWeight: 700, color: '#ECECEC', marginBottom: '12px' },
+  label: { fontSize: '11px', fontWeight: 600, color: '#888', textTransform: 'uppercase' as const, letterSpacing: '0.06em', marginBottom: '6px', display: 'block' },
+}
+
 export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken, shareBaseUrl, cotations }: Props) {
   const [toast, setToast] = useState<string | null>(null)
   const [confirmDisable, setConfirmDisable] = useState<string | null>(null)
@@ -31,8 +41,7 @@ export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken,
     e.preventDefault()
     if (!newNom.trim()) return
     await addDelegue(newNom.trim(), newSecteur.trim())
-    setNewNom('')
-    setNewSecteur('')
+    setNewNom(''); setNewSecteur('')
     setToast('Délégué ajouté')
   }
 
@@ -48,11 +57,6 @@ export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken,
     setToast('Délégué désactivé')
   }
 
-  async function handleEnable(id: string) {
-    await enableDelegue(id)
-    setToast('Délégué réactivé')
-  }
-
   async function handleImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
@@ -61,7 +65,7 @@ export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken,
     const result = await importEquipeMd(text)
     setImportResult(result)
     setImporting(false)
-    setToast(`Import : ${result.created} créés, ${result.cotations} cotations`)
+    setToast(`${result.created} délégué(s) créé(s)`)
     e.target.value = ''
   }
 
@@ -79,51 +83,48 @@ export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken,
   const shareUrl = shareToken ? `${shareBaseUrl}/share/${shareToken.token}` : null
 
   return (
-    <div className="p-6 max-w-2xl space-y-8">
-      <h1 className="text-xl font-bold text-white">Parametres</h1>
+    <div style={{ maxWidth: '600px', padding: '0 16px 40px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <h1 style={{ fontFamily: 'Lora, Georgia, serif', fontSize: '20px', fontWeight: 700, color: '#ECECEC', marginTop: '4px' }}>
+        Paramètres
+      </h1>
 
-      {/* Add delegate */}
-      <section>
-        <h2 className="text-sm font-semibold text-gray-300 mb-3">Ajouter un délégué</h2>
-        <form onSubmit={handleAdd} className="flex gap-2">
-          <input
-            value={newNom}
-            onChange={e => setNewNom(e.target.value)}
-            placeholder="Nom"
-            required
-            className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-600"
-          />
-          <input
-            value={newSecteur}
-            onChange={e => setNewSecteur(e.target.value)}
-            placeholder="Secteur"
-            className="w-32 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-600"
-          />
-          <button type="submit" className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white text-sm rounded-lg transition-colors">
-            + Ajouter
-          </button>
+      {/* Ajouter un délégué */}
+      <section style={S.card}>
+        <p style={S.sectionTitle}>Ajouter un délégué</p>
+        <form onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ flex: 2 }}>
+              <label style={S.label} htmlFor="new-nom">Nom</label>
+              <input id="new-nom" value={newNom} onChange={e => setNewNom(e.target.value)} placeholder="Prénom Nom" required style={S.input} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label style={S.label} htmlFor="new-secteur">Secteur</label>
+              <input id="new-secteur" value={newSecteur} onChange={e => setNewSecteur(e.target.value)} placeholder="Ville" style={S.input} />
+            </div>
+          </div>
+          <button type="submit" style={{ ...S.btn, alignSelf: 'flex-start' }}>+ Ajouter</button>
         </form>
       </section>
 
-      {/* Active delegates list */}
-      <section>
-        <h2 className="text-sm font-semibold text-gray-300 mb-3">Délégués actifs ({deleguesActifs.length})</h2>
-        <div className="space-y-2">
+      {/* Délégués actifs */}
+      <section style={S.card}>
+        <p style={S.sectionTitle}>Délégués actifs ({deleguesActifs.length})</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           {deleguesActifs.map(d => (
-            <div key={d.id} className="bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 flex items-center gap-3">
+            <div key={d.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: '#1a1a1a', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.06)' }}>
               {editingId === d.id ? (
                 <>
-                  <input value={editNom} onChange={e => setEditNom(e.target.value)} className="flex-1 px-2 py-1 bg-gray-800 border border-gray-700 rounded text-white text-sm" />
-                  <input value={editSecteur} onChange={e => setEditSecteur(e.target.value)} className="w-28 px-2 py-1 bg-gray-800 border border-gray-700 rounded text-white text-sm" />
-                  <button onClick={() => handleEdit(d.id)} className="text-xs text-green-400 hover:text-green-300">&#10003;</button>
-                  <button onClick={() => setEditingId(null)} className="text-xs text-gray-500 hover:text-gray-300">&#10005;</button>
+                  <input value={editNom} onChange={e => setEditNom(e.target.value)} style={{ ...S.input, flex: 2 }} />
+                  <input value={editSecteur} onChange={e => setEditSecteur(e.target.value)} placeholder="Secteur" style={{ ...S.input, flex: 1 }} />
+                  <button onClick={() => handleEdit(d.id)} style={{ color: '#3fb950', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '16px' }}>✓</button>
+                  <button onClick={() => setEditingId(null)} style={{ color: '#555', background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px' }}>✕</button>
                 </>
               ) : (
                 <>
-                  <span className="flex-1 text-sm text-white">{d.nom}</span>
-                  {d.secteur && <span className="text-xs text-gray-500">{d.secteur}</span>}
-                  <button onClick={() => { setEditingId(d.id); setEditNom(d.nom); setEditSecteur(d.secteur ?? '') }} className="text-xs text-gray-500 hover:text-gray-300">Modifier</button>
-                  <button onClick={() => setConfirmDisable(d.id)} className="text-xs text-red-500 hover:text-red-400">Désactiver</button>
+                  <span style={{ flex: 1, fontSize: '13px', fontWeight: 500, color: '#ECECEC' }}>{d.nom}</span>
+                  {d.secteur && <span style={{ fontSize: '11px', color: '#555' }}>{d.secteur}</span>}
+                  <button onClick={() => { setEditingId(d.id); setEditNom(d.nom); setEditSecteur(d.secteur ?? '') }} style={{ ...S.btnGhost, padding: '4px 10px' }}>Modifier</button>
+                  <button onClick={() => setConfirmDisable(d.id)} style={{ ...S.btnDanger, padding: '4px 10px' }}>Désactiver</button>
                 </>
               )}
             </div>
@@ -131,66 +132,73 @@ export function ParametresClient({ deleguesActifs, deleguesInactifs, shareToken,
         </div>
       </section>
 
-      {/* Inactive delegates */}
+      {/* Délégués désactivés */}
       {deleguesInactifs.length > 0 && (
-        <section>
-          <h2 className="text-sm font-semibold text-gray-500 mb-3">Délégués désactivés ({deleguesInactifs.length})</h2>
-          <div className="space-y-2">
+        <section style={{ ...S.card, opacity: 0.8 }}>
+          <p style={{ ...S.sectionTitle, color: '#666' }}>Délégués désactivés ({deleguesInactifs.length})</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {deleguesInactifs.map(d => (
-              <div key={d.id} className="bg-gray-900/50 border border-gray-800 rounded-lg px-4 py-3 flex items-center gap-3">
-                <span className="flex-1 text-sm text-gray-500">{d.nom}</span>
-                {d.secteur && <span className="text-xs text-gray-600">{d.secteur}</span>}
-                <button onClick={() => handleEnable(d.id)} className="text-xs text-blue-400 hover:text-blue-300">Réactiver</button>
+              <div key={d.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: '#161616', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.04)' }}>
+                <span style={{ flex: 1, fontSize: '13px', color: '#555' }}>{d.nom}</span>
+                {d.secteur && <span style={{ fontSize: '11px', color: '#444' }}>{d.secteur}</span>}
+                <button onClick={() => enableDelegue(d.id).then(() => setToast('Délégué réactivé'))} style={{ ...S.btnGhost, padding: '4px 10px', color: '#C8714E' }}>Réactiver</button>
               </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* Import equipe.md */}
-      <section>
-        <h2 className="text-sm font-semibold text-gray-300 mb-3">Importer depuis equipe.md</h2>
-        <label className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-sm text-white rounded-lg cursor-pointer transition-colors">
-          {importing ? 'Import en cours...' : 'Choisir un fichier .md'}
-          <input type="file" accept=".md,.txt" onChange={handleImport} className="hidden" disabled={importing} />
-        </label>
-        {importResult && (
-          <p className="mt-2 text-xs text-gray-400">
-            {importResult.created} délégué(s) créé(s) · {importResult.cotations} cotation(s) importée(s) · {importResult.skipped} ligne(s) ignorée(s)
-          </p>
-        )}
-      </section>
-
-      {/* Share link */}
-      <section>
-        <h2 className="text-sm font-semibold text-gray-300 mb-3">Lien de partage lecture seule</h2>
+      {/* Lien de partage */}
+      <section style={S.card}>
+        <p style={S.sectionTitle}>Lien de partage lecture seule</p>
+        <p style={{ fontSize: '12px', color: '#666', marginBottom: '12px' }}>
+          Permet à ta direction ou à E&C de consulter le dashboard sans connexion.
+        </p>
         {shareUrl ? (
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2">
-              <span className="flex-1 text-xs text-gray-300 truncate">{shareUrl}</span>
-              <button onClick={() => { navigator.clipboard.writeText(shareUrl); setToast('Lien copié'); }} className="text-xs text-blue-400 hover:text-blue-300">Copier</button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '8px 12px' }}>
+              <span style={{ flex: 1, fontSize: '11px', color: '#888', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{shareUrl}</span>
+              <button onClick={() => { navigator.clipboard.writeText(shareUrl); setToast('Lien copié') }} style={{ ...S.btn, padding: '5px 12px', fontSize: '12px', flexShrink: 0 }}>Copier</button>
             </div>
-            <button onClick={() => revokeShareToken(shareToken!.id)} className="text-xs text-red-500 hover:text-red-400">Révoquer le lien</button>
+            <button onClick={() => revokeShareToken(shareToken!.id).then(() => setToast('Lien révoqué'))} style={{ ...S.btnDanger, alignSelf: 'flex-start' }}>Révoquer le lien</button>
           </div>
         ) : (
-          <button onClick={() => generateToken()} className="px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-sm text-white rounded-lg transition-colors">
-            Générer un lien de partage
-          </button>
+          <button onClick={() => generateToken().then(() => setToast('Lien généré'))} style={S.btn}>Générer un lien</button>
         )}
       </section>
 
-      {/* CSV Export */}
-      <section>
-        <h2 className="text-sm font-semibold text-gray-300 mb-3">Export CSV</h2>
-        <button onClick={handleExport} className="px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-sm text-white rounded-lg transition-colors">
-          Exporter CSV ({cotations.length} cotations)
+      {/* Export CSV */}
+      <section style={S.card}>
+        <p style={S.sectionTitle}>Export CSV</p>
+        <p style={{ fontSize: '12px', color: '#666', marginBottom: '12px' }}>
+          Télécharge toutes les cotations au format Excel / Google Sheets.
+        </p>
+        <button onClick={handleExport} style={{ ...S.btnGhost, color: '#ECECEC', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          ↓ Exporter ({cotations.length} cotations)
         </button>
+      </section>
+
+      {/* Import équipe.md */}
+      <section style={{ ...S.card, opacity: 0.7 }}>
+        <p style={{ ...S.sectionTitle, color: '#666' }}>Import depuis equipe.md</p>
+        <p style={{ fontSize: '12px', color: '#555', marginBottom: '10px' }}>
+          Import en masse depuis un fichier markdown — initialisation uniquement.
+        </p>
+        <label style={{ ...S.btnGhost, display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
+          {importing ? 'Import...' : 'Choisir un fichier .md'}
+          <input type="file" accept=".md,.txt" onChange={handleImport} style={{ display: 'none' }} disabled={importing} />
+        </label>
+        {importResult && (
+          <p style={{ marginTop: '8px', fontSize: '11px', color: '#888' }}>
+            {importResult.created} créé(s) · {importResult.cotations} cotation(s) · {importResult.skipped} ignorée(s)
+          </p>
+        )}
       </section>
 
       {confirmDisable && (
         <ConfirmModal
           title="Désactiver ce délégué ?"
-          message="L'historique sera conservé. Vous pourrez le réactiver plus tard."
+          message="L'historique est conservé. Tu pourras le réactiver plus tard."
           onConfirm={() => handleDisable(confirmDisable)}
           onCancel={() => setConfirmDisable(null)}
         />
