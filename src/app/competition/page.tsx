@@ -36,17 +36,21 @@ export default async function CompetitionPage() {
         engager={markerPosition(moyE)}
       />
     }>
-      <div className="p-6 max-w-2xl">
-        <h1 className="text-xl font-bold text-white mb-6">Posture vs Marché</h1>
+      <div style={{ padding: '0 16px 40px', maxWidth: '640px' }}>
+        <h1 style={{ fontFamily: 'Lora, Georgia, serif', fontSize: '20px', fontWeight: 700, color: '#ECECEC', marginTop: '4px', marginBottom: '16px' }}>
+          Posture vs Marché
+        </h1>
         <GaugeObjectif actuel={pctProactifs} cible={60} />
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
-            <p style={{ color: '#888', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Proactifs (niv. 3)</p>
-            <p style={{ color: '#3fb950', fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>{proactifs}</p>
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          <div style={{ background: 'rgba(63,185,80,0.06)', border: '1px solid rgba(63,185,80,0.2)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
+            <p style={{ color: '#888', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>Proactifs</p>
+            <p style={{ color: '#3fb950', fontSize: '32px', fontWeight: 700, lineHeight: 1, fontFamily: 'Lora, Georgia, serif' }}>{proactifs}</p>
+            <p style={{ color: '#3fb950', fontSize: '10px', marginTop: '4px', opacity: 0.7 }}>niveau 3 sur 2+ axes</p>
           </div>
-          <div style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
-            <p style={{ color: '#888', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Réactifs (niv. 1-2)</p>
-            <p style={{ color: '#f85149', fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>{delegues.length - proactifs}</p>
+          <div style={{ background: 'rgba(248,81,73,0.06)', border: '1px solid rgba(248,81,73,0.2)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
+            <p style={{ color: '#888', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>Réactifs</p>
+            <p style={{ color: '#f85149', fontSize: '32px', fontWeight: 700, lineHeight: 1, fontFamily: 'Lora, Georgia, serif' }}>{delegues.length - proactifs}</p>
+            <p style={{ color: '#f85149', fontSize: '10px', marginTop: '4px', opacity: 0.7 }}>niveaux 1-2</p>
           </div>
         </div>
         <RadarEquipe interpeller={moyI} debattre={moyD} engager={moyE} />
